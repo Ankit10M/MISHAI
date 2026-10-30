@@ -10,11 +10,11 @@ import type { QualityTier } from '../types/world';
  */
 
 /**
- * Device-pixel-ratio clamp for the renderer. The lower bound protects the
- * frame budget on high-density displays; the upper bound preserves fidelity.
+ * Device-pixel-ratio clamp for the renderer. The lower bound is a floor;
+ * the upper cap limits excessive rendering cost on high-density displays.
  * R3F reads this as [min, max] and selects a value within the range.
  */
-export const DPR_RANGE: readonly [number, number] = [1, 2];
+export const DPR_RANGE: [number, number] = [1, 2];
 
 /** Resting background of the void. */
 export const WORLD_BACKGROUND = '#05060a';
