@@ -1,0 +1,47 @@
+# Development order
+
+## Working agreement recovered from planning
+
+The IDE implementation agent performs scoped implementation and maintains Markdown documentation. The planning/review assistant supplies instructions and reviews results. Each phase ends with a report and review before moving on.
+
+The documentation prepared here is a reconstructed baseline to supply that workflow. It is not evidence that the IDE agent previously wrote these documents or completed the missing work.
+
+## Completed foundation scope: Phase 4.1
+
+Status: completed in the local working tree on 2026-10-30; see the [closure report](phase-reports/phase-4.1-report.md). The checklist below records the accepted scope. Stop for review before selecting subsequent work.
+
+1. Read the documentation index, vision, constitution, architecture, open decisions, and current report.
+2. Reproduce and fix the DPR compile error without changing rendering intent.
+3. Correct the DPR explanation so the upper clamp is described accurately.
+4. Format the four existing files identified by the audit.
+5. Integrate/review this documentation against the code; preserve uncertainty labels.
+6. Run production build, lint, and formatting checks.
+7. Verify the shell in a browser, including resizing and console errors. A deliberately empty scene should be reported as an empty scene, not a working portfolio.
+8. Update the phase report with exact changes, commands, results, runtime observations, remaining gaps, and the next proposed scope.
+
+Acceptance for this closure: checks pass; browser mounting is verified or a remaining blocker is explicitly reported; architecture references resolve; no placeholder is represented as a completed system.
+
+Do not add particles, humanoid assets, animation libraries, or a new global store merely to make the foundation look advanced.
+
+## Proposed now: subsequent dependency order
+
+This is a provisional implementation order, not a recovered historical Phase 4.2+ plan. The user subsequently authorized Phase 4.2: the semantic shell, native navigation, reduced-motion handling, and WebGL initialization fallback. That bounded implementation is now complete; see the [Phase 4.2 report](phase-reports/phase-4.2-report.md). Review it before selecting another scope; no Phase 4.3 work has started.
+
+| Work area                                 | Prerequisites / evidence of success                                                                                         |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Semantic shell and access behavior        | Phase 4.2 implemented; keyboard and emulated viewport/fallback checks pass; real touch and screen-reader checks remain open |
+| Minimal experience state and ownership    | Define actual chapter/event interfaces; one writer per property; verify explicit user actions dominate inference            |
+| World/environment and camera baseline     | Stable orientation, lifecycle cleanup, input-independent readable content                                                   |
+| Particle/entity proof of concept          | Approved visual reference and asset approach; demonstrate fragmented form and measured budget                               |
+| Narrative transitions and content         | Resolve intro/CREATE order; connect content and world meaningfully                                                          |
+| Coordinated interaction and motion        | Verify causal order, priorities, interruption and settling                                                                  |
+| Bounded adaptation and quality            | Introduce only measured signals and reversible behavior; avoid speculative complexity                                       |
+| Content completion and release validation | Real copy/assets, responsive/accessibility/performance review, deployment choice                                            |
+
+Quality and accessibility are requirements throughout, not cleanup reserved for the last row.
+
+## Phase report requirements
+
+Record source commit or working-tree context, scope, files changed, why, verification commands/results, browser/device conditions, unresolved decisions, known defects, and proposed next step. Distinguish planned, implemented, tested, and deferred work.
+
+Stop after the scoped report for review. Do not silently expand the roadmap or automatically implement the next phase.
