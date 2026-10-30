@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+/*
+ * Base foundation styles.
+ *
+ * The world fills the viewport as a fixed backdrop; the DOM/UI layer composes
+ * above it. Tailwind utilities own component-level styling — this file holds
+ * only the document reset and the resting "void" background.
+ */
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #05060a; /* void — the world's resting background */
+}
+
+#root {
+  overflow: hidden;
+}
