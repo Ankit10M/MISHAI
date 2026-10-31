@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entity lifecycle check</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="fixture-root"></div>
+    <script type="module">
+      import { createElement, StrictMode } from 'react';
+      import { createRoot } from 'react-dom/client';
+      import { EntityPreview } from '/src/dev/EntityPreview.tsx';
+      let root;
+      window.entityFixture = {
+        mount() {
+          root = createRoot(document.getElementById('fixture-root'));
+          root.render(createElement(StrictMode, null, createElement(EntityPreview)));
+        },
+        unmount() {
+          root.unmount();
+        },
+      };
+      window.entityFixture.mount();
+    </script>
+  </body>
+</html>

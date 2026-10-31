@@ -1,5 +1,5 @@
 // Test-side inspection of the installed React/R3F renderer; no production debug API.
-export function installWorldProbe() {
+export function installWorldProbe(pointName = 'ambient-particles') {
   const canvas = document.querySelector('canvas');
   let fiber = canvas[Object.keys(canvas).find((key) => key.startsWith('__reactFiber$'))];
   let renderer;
@@ -25,7 +25,7 @@ export function installWorldProbe() {
     probe.camera = camera;
     probe.frames++;
     if (probe.times.length < 2000) probe.times.push(performance.now());
-    const points = scene.getObjectByName('ambient-particles');
+    const points = scene.getObjectByName(pointName);
     if (points) {
       const positions = points.geometry.attributes.position.array;
       if (!lastPositions) {
@@ -41,7 +41,7 @@ export function installWorldProbe() {
     original(scene, camera);
   };
   probe.read = () => {
-    const points = probe.scene?.getObjectByName('ambient-particles');
+    const points = probe.scene?.getObjectByName(pointName);
     const gl = renderer.getContext();
     const debug = gl.getExtension('WEBGL_debug_renderer_info');
     return {

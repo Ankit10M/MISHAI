@@ -38,6 +38,8 @@ The five-second opening is a recovered concept, not a finalized blocking-loading
 
 These are conceptual associations. They do not establish exact mesh regions, formation percentages, or particle distributions.
 
+Phase 4.5 now tags the separate procedural prototype with these five meanings. Head includes the neck, arms include shoulders/hands, lower body includes pelvis/legs/feet, and the posterior central torso strip is the optional spine region. Remaining torso samples map to skills. Overlapping source shapes use nearest signed component distance, with configuration order resolving exact ties; spine overrides only torso-classified samples. This is development metadata, not production chapter assembly or final anatomy. See the [Phase 4.5 report](../implementation/phase-reports/phase-4.5-report.md).
+
 ## Projects in requested order
 
 1. NeuroSearch AI

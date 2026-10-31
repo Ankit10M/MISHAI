@@ -7,7 +7,10 @@ import { PARTICLE_FIELD as field } from '../src/world/particles/config.ts';
 
 const origin = process.argv[2] ?? 'http://127.0.0.1:5173';
 const production = process.argv.includes('--production');
-const evidence = new URL('../docs/implementation/evidence/phase-4.4/', import.meta.url);
+const evidence = new URL(
+  process.env.MISHAI_EVIDENCE_DIR ?? '../docs/implementation/evidence/phase-4.4/',
+  import.meta.url,
+);
 const { send, evaluate, messages, close } = await browserSession();
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const results = { origin, production, browser: await send('Browser.getVersion'), samples: [] };
@@ -119,6 +122,10 @@ try {
   assert.equal(await evaluate('worldProbe.read().material'), first.material);
   await preference('reduce');
   await waitFor(`document.querySelector('.background-motion-control button').disabled`);
+  assert.equal(
+    await evaluate(`document.querySelector('.background-motion-control button').textContent`),
+    'Background motion off',
+  );
   await settled();
   await preference('no-preference');
   await waitFor(`!document.querySelector('.background-motion-control button').disabled`);
@@ -184,7 +191,7 @@ try {
   await viewport(1440, 900);
 
   // Capture reproducible resting views on a fresh mount, plus a short real canvas recording.
-  if (production) {
+  if (production && !process.argv.includes('--checks-only')) {
     await preference('reduce');
     await send('Page.navigate', { url: origin });
     await waitFor('Boolean(document.querySelector("canvas"))');
@@ -228,7 +235,7 @@ try {
       };
     })`);
     await writeFile(new URL('motion-strip.jpg', evidence), Buffer.from(strip, 'base64'));
-  } else {
+  } else if (!production) {
     await send('Page.navigate', { url: origin + '/scripts/world-fixture.html' });
     await attach();
     for (let cycle = 0; cycle < 2; cycle++) {
@@ -267,7 +274,9 @@ try {
   );
   console.log(
     production
-      ? 'Captured production visual evidence'
+      ? process.argv.includes('--checks-only')
+        ? 'PASS production world checks; visual capture skipped'
+        : 'Captured production visual evidence'
       : 'PASS StrictMode lifecycle: two disposal cycles and no accumulated motion listeners',
   );
 } finally {

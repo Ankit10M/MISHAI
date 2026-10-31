@@ -27,6 +27,12 @@ Development and production-preview checks in headless Chrome on Windows reported
 
 Static settling, real tab hiding, bounded resume movement, geometry/material identity through navigation and two StrictMode disposal cycles pass. Resource counts return to zero after teardown in the fixture. Long-run memory, thermal/power behavior, context restoration and other browsers remain unverified. The existing Clock deprecation and large JavaScript bundle warning are unchanged; no thresholds or dependencies were altered to conceal them.
 
+## Phase 4.5 static entity boundary
+
+The development-only humanoid has a fixed prototype budget of 2,600 particles, one Points draw call, one geometry/material/program and zero textures in the tested headless renderer. It registers no frame callback and settles in demand mode. Sampling happens on mount; view, region and viewport changes retain geometry/material instances. Region filtering updates one existing index buffer and draw range. The public portfolio still renders only its 280-point field and loads no entity code.
+
+Wide/narrow captures, actual viewport/DPR/resource data and two cleanup cycles are recorded in the [Phase 4.5 report](../implementation/phase-reports/phase-4.5-report.md). No FPS claim is made for a static scene, and particle count alone is not a device performance measurement. Mobile hardware, long-session memory and final visual budgets remain open.
+
 ## Proposed now: measurement approach
 
 Establish baseline measurements only after the build and browser runtime work. Record the device, browser, viewport, DPR, feature set, and scenario for each measurement.

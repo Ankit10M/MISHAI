@@ -15,7 +15,11 @@ export function BackgroundMotionControl({
         onClick={onToggle}
         aria-describedby="background-motion-status"
       >
-        {paused ? 'Resume background motion' : 'Pause background motion'}
+        {reducedMotion
+          ? 'Background motion off'
+          : paused
+            ? 'Resume background motion'
+            : 'Pause background motion'}
       </button>
       <span id="background-motion-status">
         {reducedMotion ? 'Off: reduced motion' : paused ? 'Paused' : 'Enabled'}

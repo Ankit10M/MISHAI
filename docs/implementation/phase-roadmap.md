@@ -36,7 +36,7 @@ The latest recovered conversation reached the Phase 4.1 IDE-agent instruction. T
 
 ## Actual implementation inventory
 
-Newly authorized implementation, separate from the recovered historical plan: Phase 4.2 was reviewed at `caa427e`, and Phase 4.3 at `69d5fcc`. Their reports remain historical evidence. **Phase 4.4 — World & Particle Prototype** is complete locally and ready for review. Its [report](phase-reports/phase-4.4-report.md) records seeded batched particles, motion controls, native behavior, visual evidence, measured conditions and limits. No later phase or humanoid work has started.
+Newly authorized implementation, separate from the recovered historical plan: Phase 4.4 was reviewed at `1bb4e4b`; earlier reports and evidence remain historical. **Phase 4.5 — Fragmented Humanoid Prototype** is complete locally and ready for review. Its [report](phase-reports/phase-4.5-report.md) records the original procedural proxy, deterministic region-tagged particles, isolated development preview, visual evidence and limits. Formation/dissolution and later phases have not started; final anatomy is not approved.
 
 | Capability                                           | Status                                                                                                                  |
 | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +44,7 @@ Newly authorized implementation, separate from the recovered historical plan: Ph
 | R3F Canvas and rendering defaults                    | Compile blocker fixed; headless Chrome mount and resizing verified                                                      |
 | Scene content                                        | One restrained seeded particle field with negative space and stable camera                                              |
 | Experience state / world contract                    | React-owned observed section and separate last activation; typed read-only snapshot, no world consumer or orchestration |
-| Particles / humanoid / shaders                       | Batched Points prototype implemented; humanoid and custom shaders not implemented                                       |
+| Particles / humanoid / shaders                       | Public ambient field plus separate static procedural humanoid preview; no production reveal or custom shaders           |
 | Countdown / Big Bang / chapter sequence              | Not implemented                                                                                                         |
 | Portfolio content / semantic navigation              | Five DOM sections and native anchors implemented; supplied content only, gaps explicit                                  |
 | Interaction / motion / adaptation                    | Bounded ambient drift, user pause, reduced-motion and visibility policy; no adaptation or cinematic transitions         |

@@ -11,7 +11,8 @@
 | `src/app/experience.ts`               | Read-only snapshot, state reducer, activation filter and pure selection policy                            |
 | `src/app/useExperience.ts`            | App-owned React state, DOM measurements, event/observer scheduling and cleanup                            |
 | `src/content/portfolio.ts`            | Typed supplied content; null represents missing biography, role details, or email                         |
-| `src/world/scene/WorldCanvas.tsx`     | Create the single R3F Canvas; configure renderer and camera                                               |
+| `src/world/scene/WorldCanvas.tsx`     | Compose the public ambient Scene through the shared rendering surface                                     |
+| `src/world/scene/RenderSurface.tsx`   | Own the single R3F Canvas, renderer initialization and frame scheduling for each entry                    |
 | `src/world/scene/WorldBoundary.tsx`   | Isolate rendering failures and show a DOM status without removing the portfolio                           |
 | `src/app/useBackgroundMotion.ts`      | User pause choice, live reduced-motion and document visibility; clean up both subscriptions               |
 | `src/app/BackgroundMotionControl.tsx` | Accessible native pause/resume button and reduced-motion explanation, outside Canvas                      |
@@ -36,6 +37,12 @@ The future world integration boundary is a typed `ExperienceSnapshot` prop from 
 Phase 4.4's actual world input is only `motionEnabled`, derived independently as `visible && !reducedMotion && !paused`. No section/color mapping or unused experience snapshot is passed to Scene. User pause lasts until toggled or the app unmounts; reduced-motion changes never erase that choice. The native button is disabled while reduced motion is requested, with a visible explanation. It sits in the normal header after section navigation, separate from the inert, aria-hidden canvas; the skip/brand/section keyboard order is preserved. Its status describes the user's motion permission, not successful WebGL rendering. No persistence or settings store exists.
 
 The provisional policy uses a reading line at 28% of viewport height, a 12px retention margin to avoid boundary jitter, and the last actually visible section within 2px of the document bottom. Introduction, gaps and footer can select null. A passive scroll listener and resize/hash/pageshow listeners schedule at most one animation-frame measurement of five rectangles; body/section ResizeObservers cover flow layout changes. There is no idle polling. Every subscription, observer and queued frame is cleaned up, with a disposed guard for late callbacks. See the [Phase 4.3 report](../implementation/phase-reports/phase-4.3-report.md) for the complete policy, edge cases and verification.
+
+## Phase 4.5 preview boundary
+
+The public WorldCanvas now delegates its existing Canvas/renderer implementation to `src/world/scene/RenderSurface.tsx`. The development-only `src/dev/EntityPreview.tsx` also uses that surface and the existing world-only error boundary. Entity data/rendering live under `src/world/entity`; the normal App and Scene do not import them. Preview DOM controls own only the chosen view and region, with no experience-state coupling, navigation events or per-frame state.
+
+`/dev/entity.html` is a local Vite entry, omitted from production output. A build-graph guard and output/network checks enforce that isolation. Region labels map to conceptual body meaning but do not create chapter behavior. Public motion control now says “Background motion off” while reduced motion disables it; the stored pause choice is unchanged.
 
 ## Recovered architecture intent
 

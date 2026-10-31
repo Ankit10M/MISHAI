@@ -13,10 +13,10 @@ Status: explicit unknowns. Resolve items when the next scoped task depends on th
 | D07 | Optional journey                 | User allowed optional journey                                                                                             | Decide inclusion when composing content                                                             |
 | D08 | State and orchestration          | Phase 4.3 uses an App-owned React reducer, observed section and historical explicit activation, with a read-only snapshot | Semantic scope resolved without Zustand; future chapter/world transitions and ownership remain open |
 | D09 | Animation and scroll             | Native scrolling preserved; Phase 4.4 adds bounded particle drift with pause/reduced-motion/visibility gates              | Future cinematic mechanics and property ownership remain open; no animation libraries selected      |
-| D10 | Entity asset pipeline            | Sampled-mesh particle approach discussed                                                                                  | Choose source asset, usage rights, sampling approach and visual acceptance                          |
+| D10 | Entity asset pipeline            | Phase 4.5 supplies an original smooth procedural proxy and deterministic sampling boundary for development review         | Approve final proportions/gaps and any replacement mesh with usage rights before later integration  |
 | D11 | Quality budgets                  | Phase 4.4: conservative fixed 280-point field and modest headless renderer measurements                                   | Physical-device budgets, thresholds and adaptation remain open; no achieved 60-FPS claim            |
 | D12 | Accessibility / failure policy   | Native navigation, world initialization fallback and live motion preference plus user pause implemented                   | Screen-reader/real-device coverage, broader motion and context-loss recovery remain open            |
-| D13 | Later implementation numbering   | Phases 4.2–4.4 explicitly authorized by new tasks; no recovered historical later specification                            | Review Phase 4.4 before choosing another scope; humanoid work not started                           |
+| D13 | Later implementation numbering   | Phases 4.2–4.5 authorized through new tasks, separate from historical planning                                            | Review Phase 4.5 settled entity before formation; no later phase started                            |
 | D14 | Backend and publishing           | No selected infrastructure                                                                                                | Decide only when a concrete product requirement needs it                                            |
 
 ## Known defects are not open design decisions
@@ -58,6 +58,14 @@ Use existing R3F scheduling: `always` only while visible, unpaused and not reduc
 
 Mount the DOM synchronously at bootstrap so production initial fragments/restored positions can find their native anchor targets. This corrects a reproduced production startup timing failure without scripted scrolling or history/focus changes. Particle geometry/material ownership remains with R3F. See the [Phase 4.4 report](../implementation/phase-reports/phase-4.4-report.md) for exact values, evidence, measurements and limits.
 
+## New Phase 4.5 implementation choices — provisional
+
+Date: 2026-10-31. With no approved external mesh, use an original smooth union of twenty anatomical ellipsoids as a replaceable sampling source. Render only 2,600 deterministically sampled particles: a thin interior surface band with some deeper points, unequal density and six explicit missing patches. No ellipsoid meshes, custom shader, texture, animation or external model is rendered/loaded. This does not approve final anatomy or recover an earlier mesh decision.
+
+Stable accepted-sample IDs and discrete region tags support head/identity, arms/creation, torso/technology, posterior spine/optional journey and lower-body/foundation inspection. Nearest signed component distance resolves overlaps, then configuration order; the posterior strip overrides torso classification only. Source, sampling and rendering remain separate modules. View/region controls preserve geometry/material resources; framing uses camera distance, never anatomical X scaling.
+
+The local `/dev/entity.html` review entry uses one shared rendering surface in demand mode and is excluded from the normal application's module graph and production output. The build rejects accidental entity/development imports. The public portfolio is unchanged except the requested reduced-motion label correction. See the [Phase 4.5 report](../implementation/phase-reports/phase-4.5-report.md) for visual assessment, exact parameters, evidence and limits.
+
 ## Change log
 
 2026-10-30: Created the documentation baseline from recovered conversation context and the code audit. No historical design gap was silently converted into a final choice. No runtime implementation was changed.
@@ -69,3 +77,5 @@ Mount the DOM synchronously at bootstrap so production initial fragments/restore
 2026-10-31: Implemented newly scoped Phase 4.3 on reviewed `caa427e`. Updated D08 and D13 for bounded semantic experience state; preserved historical reports and stopped for review.
 
 2026-10-31: Implemented newly scoped Phase 4.4 on reviewed `69d5fcc`, including production native-fragment startup correction. Added measured/visual evidence and stopped for review without humanoid work.
+
+2026-10-31: Implemented newly scoped Phase 4.5 on reviewed `1bb4e4b`. Resolved the provisional procedural source for local review, preserved public behavior and historical evidence, and stopped before formation animation.

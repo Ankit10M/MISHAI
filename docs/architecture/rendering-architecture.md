@@ -2,7 +2,7 @@
 
 ## Current render path
 
-`main.tsx` mounts `App`; `App` renders independent `WorldCanvas` and `PortfolioShell` siblings. The world boundary contains one fixed, inert canvas behind the DOM content. `WorldCanvas` composes `Scene` inside R3F; `Scene` composes one `ParticleField`. Phase 4.4 introduces a bounded spatial prototype, not the cinematic narrative or humanoid.
+`main.tsx` mounts `App`; `App` renders independent `WorldCanvas` and `PortfolioShell` siblings. The world boundary contains one fixed, inert canvas behind the DOM content. `WorldCanvas` uses the shared `RenderSurface` to compose `Scene` inside R3F; `Scene` still composes only the ambient `ParticleField`. The development-only humanoid preview is a separate entry, not part of this public render path.
 
 | Setting                           | Observed value                                                                        |
 | --------------------------------- | ------------------------------------------------------------------------------------- |
@@ -32,11 +32,21 @@ The position generator uses depth-dependent projection to preserve intentional s
 
 Installed R3F's `removeChild` recursively disposes declarative geometry/materials through `disposeOnIdle`; geometry disposal releases its GPU attribute buffers. The root teardown disconnects events, clears render lists, forces context loss and releases the scene after its existing delay. No manual disposal or `primitive` ownership bypass was added. Two StrictMode fixture cycles verified geometry/material disposal, zero remaining geometry/program counts and motion-listener cleanup. This is a bounded lifecycle check, not a long-session memory-leak audit. See the [Phase 4.4 report](../implementation/phase-reports/phase-4.4-report.md).
 
+## Development-only entity prototype
+
+`dev/entity.html` loads `src/dev/entity-preview.tsx` and its DOM `EntityPreview`. It uses the same `RenderSurface` and `WorldBoundary`, with an entity-specific fallback message and one static Canvas. Shared renderer setup was extracted from WorldCanvas without changing its initialization/failure behavior, DPR defaults or ownership. Production still imports only the ambient Scene; the entity does not receive experience state or motion policy beyond a fixed `motionEnabled={false}`.
+
+`src/world/entity/config.ts` defines provisional anatomy, missing patches, count and colors. `anatomy.ts` smoothly unions twenty overlapping ellipsoids and classifies regions; the ellipsoids are never rendered. `sampleEntity.ts` supplies deterministic position/color/identity/region arrays and region index lists. `EntityPoints.tsx` is independent of the shape calculation and renders that sampled data as one Points object. An approved mesh can later replace the sampling source while retaining the sampled-array boundary; no external asset is approved by this implementation.
+
+The static entity uses demand rendering and no frame subscription. Region selection rewrites an existing index buffer and draw range; position/color buffers, geometry and material remain stable. Front and three-quarter choices immediately change Y rotation between 0 and 36 degrees. Camera distance fits conservative full-body bounds using both viewport dimensions, preserving scale `[1, 1, 1]`; ambient X-only scaling is never applied to the body. The preview FOV is explicitly set from entity configuration. Reset restores full/front state.
+
+R3F owns all declarative geometry/material disposal as for the ambient field. Two entity remount cycles verified disposal, context release and zero remaining geometry/program resources. The production build guard rejects `src/dev` and `src/world/entity` modules in the build graph; output and normal-app network assertions additionally verify exclusion. See the [Phase 4.5 report](../implementation/phase-reports/phase-4.5-report.md) for region precedence, measurements and visual assessment.
+
 ## Recovered rendering direction
 
 The universe should have persistent spatial continuity. Entity formation, particles, environment, and camera evolve with narrative state while semantic content stays independently usable.
 
-A sampled base mesh feeding a particle field was discussed as an entity approach, with custom shader/noise displacement and partial visibility. Treat this as a candidate implementation technique: no approved mesh, sampler, shader, particle count, or asset pipeline exists in this checkout.
+A sampled base mesh feeding a particle field was discussed as an entity approach, with custom shader/noise displacement and partial visibility. Phase 4.5 supplies only a provisional procedural sampling source and static 2,600-point review budget. No external mesh, final anatomy, custom shader or production entity asset pipeline is approved.
 
 Particles communicate formation, connection, and consequences. Preserve gaps, depth variation, and partial visibility. Avoid turning the target into a dense glowing mannequin.
 
@@ -44,7 +54,7 @@ Camera movement must be purposeful and restrained. Exact camera paths, scroll ma
 
 ## Implementation boundaries
 
-- WorldCanvas owns renderer setup; keep narrative and feature logic out of it.
+- RenderSurface owns shared renderer setup; WorldCanvas owns the public world wrapper. Keep narrative and feature logic out of both.
 - Scene composes dedicated world modules.
 - Rendering configuration holds defaults; an eventual quality policy may select effective settings.
 - Per-frame visual work should avoid allocating large objects or triggering DOM rerenders unnecessarily.
@@ -53,4 +63,4 @@ Camera movement must be purposeful and restrained. Exact camera paths, scroll ma
 
 ## Not implemented
 
-Humanoid asset sampling, custom shader effects, postprocessing, camera choreography, narrative-to-world mapping, adaptive quality, broader motion coordination and runtime context-loss recovery remain pending. Initialization fallback, native DOM navigation, background pause and live reduced-motion handling are implemented; they are not complete resilience or accessibility systems.
+Approved-mesh sampling, formation/dissolution, production humanoid reveal, custom shader effects, postprocessing, camera choreography, narrative mapping, adaptive quality and runtime context-loss recovery remain pending. The static procedural preview is not final art direction. Initialization fallback, native DOM navigation, background pause and live reduced-motion handling remain intact.

@@ -1,0 +1,71 @@
+.entity-preview {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 42rem;
+}
+
+.entity-controls {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.entity-controls h1 {
+  font-size: 1.5rem;
+  letter-spacing: normal;
+  margin: 0.25rem 0;
+}
+
+.entity-controls p,
+.entity-description {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.entity-toolbar,
+.entity-toolbar [role='group'],
+.entity-toolbar label {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.entity-toolbar {
+  gap: 0.75rem 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.entity-toolbar button,
+.entity-toolbar select {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  color: var(--accent);
+  background: #0d121a;
+  font-size: 0.8125rem;
+}
+
+.entity-toolbar button[aria-pressed='true'] {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  border-color: var(--accent);
+}
+
+.entity-stage {
+  position: relative;
+  flex: 1;
+  min-height: 24rem;
+}
+
+.entity-surface {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.entity-description {
+  padding: 0.5rem 1.5rem;
+}
