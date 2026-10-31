@@ -44,6 +44,44 @@ body {
   z-index: 1;
 }
 
+.world-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #05060a99 20%,
+    #05060acc 50%,
+    #05060a99 80%,
+    transparent
+  );
+}
+
+.background-motion-control {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.background-motion-control button {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  background: #05060ae6;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.background-motion-control button:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
 .world-fallback {
   margin: 0;
   padding: 1rem max(1.5rem, calc((100% - 72rem) / 2));

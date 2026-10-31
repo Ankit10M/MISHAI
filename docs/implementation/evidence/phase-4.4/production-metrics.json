@@ -1,0 +1,102 @@
+{
+  "origin": "http://127.0.0.1:4173",
+  "production": true,
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.74",
+    "revision": "@d331de35ca8ab1358c7a17e4bd41627d55eaef51",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.25"
+  },
+  "samples": [
+    {
+      "scenario": "wide animated",
+      "frames": 189,
+      "maxStep": 0.0001404285430908203,
+      "count": 280,
+      "geometry": "88349acd-0508-4687-a001-4e63923221cf",
+      "material": "7b92821b-c100-4d0a-9cab-16ad629c4103",
+      "calls": 1,
+      "points": 280,
+      "memory": {
+        "geometries": 1,
+        "textures": 0
+      },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 900],
+      "buffer": [1425, 900],
+      "camera": [0, 0, 6],
+      "aspect": 1.5833333333333333,
+      "hidden": false,
+      "disposed": {
+        "geometry": 0,
+        "material": 0
+      },
+      "contextLost": false
+    },
+    {
+      "scenario": "narrow paused after resize",
+      "frames": 212,
+      "maxStep": 0.00011587142944335938,
+      "count": 280,
+      "geometry": "88349acd-0508-4687-a001-4e63923221cf",
+      "material": "7b92821b-c100-4d0a-9cab-16ad629c4103",
+      "calls": 1,
+      "points": 280,
+      "memory": {
+        "geometries": 1,
+        "textures": 0
+      },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [390, 844],
+      "buffer": [375, 844],
+      "camera": [0, 0, 6],
+      "aspect": 0.4443127962085308,
+      "hidden": false,
+      "disposed": {
+        "geometry": 0,
+        "material": 0
+      },
+      "contextLost": false
+    },
+    {
+      "scenario": "wide animated resize DPR 2",
+      "frames": 245,
+      "maxStep": 0.0003325939178466797,
+      "count": 280,
+      "geometry": "88349acd-0508-4687-a001-4e63923221cf",
+      "material": "7b92821b-c100-4d0a-9cab-16ad629c4103",
+      "calls": 1,
+      "points": 280,
+      "memory": {
+        "geometries": 1,
+        "textures": 0
+      },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 2,
+      "viewport": [1440, 900],
+      "buffer": [2850, 1800],
+      "camera": [0, 0, 6],
+      "aspect": 1.5833333333333333,
+      "hidden": false,
+      "disposed": {
+        "geometry": 0,
+        "material": 0
+      },
+      "contextLost": false
+    }
+  ],
+  "timing": {
+    "durationMs": 2999.5,
+    "frames": 181,
+    "medianMs": 16.700000002980232,
+    "p95Ms": 17.200000002980232,
+    "maxMs": 21.099999994039536
+  },
+  "nativeTabVisibility": true
+}

@@ -5,6 +5,7 @@ import { WebGLRenderer } from 'three';
 import { DPR_RANGE, WORLD_BACKGROUND } from '../../config/rendering';
 import { Scene } from './Scene';
 import { WorldBoundary } from './WorldBoundary';
+import { PARTICLE_FIELD } from '../particles/config';
 
 /**
  * WorldCanvas — the single boundary between the React/DOM world and the WebGL
@@ -17,7 +18,7 @@ import { WorldBoundary } from './WorldBoundary';
  *
  * See docs/architecture/rendering-architecture.md.
  */
-function RenderSurface() {
+function RenderSurface({ motionEnabled }: { motionEnabled: boolean }) {
   const renderer = useRef<WebGLRenderer | null>(null);
   const attachCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
     // Construct in React's commit so the boundary catches failures before R3F's async setup.
@@ -39,23 +40,23 @@ function RenderSurface() {
         if (!renderer.current) throw new Error('The world renderer could not initialize.');
         return renderer.current;
       }}
-      frameloop="demand"
+      frameloop={motionEnabled ? 'always' : 'demand'}
       style={{ pointerEvents: 'none' }}
-      camera={{ position: [0, 0, 6], fov: 50 }}
+      camera={{ position: [0, 0, PARTICLE_FIELD.cameraDistance], fov: PARTICLE_FIELD.cameraFov }}
       onCreated={({ gl }) => {
         gl.setClearColor(WORLD_BACKGROUND);
       }}
     >
-      <Scene />
+      <Scene motionEnabled={motionEnabled} />
     </Canvas>
   );
 }
 
-export function WorldCanvas() {
+export function WorldCanvas({ motionEnabled }: { motionEnabled: boolean }) {
   return (
     <WorldBoundary>
       <div className="world-layer" aria-hidden="true" inert>
-        <RenderSurface />
+        <RenderSurface motionEnabled={motionEnabled} />
       </div>
     </WorldBoundary>
   );

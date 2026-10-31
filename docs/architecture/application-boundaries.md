@@ -2,21 +2,24 @@
 
 ## Observed implementation
 
-| File / area                         | Current responsibility                                                                     |
-| ----------------------------------- | ------------------------------------------------------------------------------------------ |
-| `src/main.tsx`                      | Mount React in StrictMode; load global CSS                                                 |
-| `src/app/App.tsx`                   | Own experience state; compose independent WorldCanvas and PortfolioShell siblings          |
-| `src/app/PortfolioShell.tsx`        | Registry-driven sections/navigation, current feedback, explicit activation, content states |
-| `src/app/sections.ts`               | Ordered semantic section IDs/labels and derived SectionId type                             |
-| `src/app/experience.ts`             | Read-only snapshot, state reducer, activation filter and pure selection policy             |
-| `src/app/useExperience.ts`          | App-owned React state, DOM measurements, event/observer scheduling and cleanup             |
-| `src/content/portfolio.ts`          | Typed supplied content; null represents missing biography, role details, or email          |
-| `src/world/scene/WorldCanvas.tsx`   | Create the single R3F Canvas; configure renderer and camera                                |
-| `src/world/scene/WorldBoundary.tsx` | Isolate rendering failures and show a DOM status without removing the portfolio            |
-| `src/world/scene/Scene.tsx`         | Scene composition placeholder; currently returns null                                      |
-| `src/config/rendering.ts`           | Background, DPR range, default quality constant                                            |
-| `src/types/world.ts`                | QualityTier type only                                                                      |
-| `src/styles/global.css`             | Dark responsive layout, document scrolling, focus styles, live reduced-motion media query  |
+| File / area                           | Current responsibility                                                                                    |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `src/main.tsx`                        | Synchronously mount React in StrictMode so native initial hashes/restoration find DOM targets; load CSS   |
+| `src/app/App.tsx`                     | Own independent experience/motion state; compose world, shell and DOM motion control                      |
+| `src/app/PortfolioShell.tsx`          | Registry-driven sections/navigation, current feedback, explicit activation, content states                |
+| `src/app/sections.ts`                 | Ordered semantic section IDs/labels and derived SectionId type                                            |
+| `src/app/experience.ts`               | Read-only snapshot, state reducer, activation filter and pure selection policy                            |
+| `src/app/useExperience.ts`            | App-owned React state, DOM measurements, event/observer scheduling and cleanup                            |
+| `src/content/portfolio.ts`            | Typed supplied content; null represents missing biography, role details, or email                         |
+| `src/world/scene/WorldCanvas.tsx`     | Create the single R3F Canvas; configure renderer and camera                                               |
+| `src/world/scene/WorldBoundary.tsx`   | Isolate rendering failures and show a DOM status without removing the portfolio                           |
+| `src/app/useBackgroundMotion.ts`      | User pause choice, live reduced-motion and document visibility; clean up both subscriptions               |
+| `src/app/BackgroundMotionControl.tsx` | Accessible native pause/resume button and reduced-motion explanation, outside Canvas                      |
+| `src/world/scene/Scene.tsx`           | Compose the bounded ParticleField; receives only motionEnabled                                            |
+| `src/world/particles/`                | Central prototype parameters, deterministic typed arrays, batched rendering and bounded frame-local drift |
+| `src/config/rendering.ts`             | Background, DPR range, default quality constant                                                           |
+| `src/types/world.ts`                  | QualityTier type only                                                                                     |
+| `src/styles/global.css`               | Dark responsive layout, document scrolling, focus styles, live reduced-motion media query                 |
 
 The five portfolio sections have native anchor navigation, current-section feedback, and explicit missing-content states. Phase 4.3 adds minimal experience state; cinematic chapter navigation and adaptive runtime remain unimplemented. The semantic registry does not finalize the planned chapter sequence.
 
@@ -29,6 +32,8 @@ The five portfolio sections have native anchor navigation, current-section feedb
 - Only uncancelled primary clicks on the authored same-page section anchors qualify, including browser-generated clicks from keyboard activation. Modified clicks, alternate targets, download links, skip/top links and external links are excluded. No default action is prevented.
 
 The future world integration boundary is a typed `ExperienceSnapshot` prop from App to a real world consumer when one exists. Such a consumer must distinguish historical explicit activation from current observation and must not replay `lastNavigation` as a fresh command on every observed update. There is no world consumer or prop plumbing today, and no event bus, context/store framework, transition state, or R3F measurement loop. The world cannot write this snapshot. Its failure boundary remains independent.
+
+Phase 4.4's actual world input is only `motionEnabled`, derived independently as `visible && !reducedMotion && !paused`. No section/color mapping or unused experience snapshot is passed to Scene. User pause lasts until toggled or the app unmounts; reduced-motion changes never erase that choice. The native button is disabled while reduced motion is requested, with a visible explanation. It sits in the normal header after section navigation, separate from the inert, aria-hidden canvas; the skip/brand/section keyboard order is preserved. Its status describes the user's motion permission, not successful WebGL rendering. No persistence or settings store exists.
 
 The provisional policy uses a reading line at 28% of viewport height, a 12px retention margin to avoid boundary jitter, and the last actually visible section within 2px of the document bottom. Introduction, gaps and footer can select null. A passive scroll listener and resize/hash/pageshow listeners schedule at most one animation-frame measurement of five rectangles; body/section ResizeObservers cover flow layout changes. There is no idle polling. Every subscription, observer and queued frame is cleaned up, with a disposed guard for late callbacks. See the [Phase 4.3 report](../implementation/phase-reports/phase-4.3-report.md) for the complete policy, edge cases and verification.
 

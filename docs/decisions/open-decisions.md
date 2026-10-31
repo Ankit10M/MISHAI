@@ -12,11 +12,11 @@ Status: explicit unknowns. Resolve items when the next scoped task depends on th
 | D06 | Public content                   | Project names/order, skills, experience outline                                                                           | Obtain email, biography, project descriptions, URLs, assets, current experience details             |
 | D07 | Optional journey                 | User allowed optional journey                                                                                             | Decide inclusion when composing content                                                             |
 | D08 | State and orchestration          | Phase 4.3 uses an App-owned React reducer, observed section and historical explicit activation, with a read-only snapshot | Semantic scope resolved without Zustand; future chapter/world transitions and ownership remain open |
-| D09 | Animation and scroll             | Native document/anchor scrolling selected for the Phase 4.2 shell; reduced motion disables smoothing                      | Future cinematic mechanics and property ownership remain open; no animation libraries selected      |
+| D09 | Animation and scroll             | Native scrolling preserved; Phase 4.4 adds bounded particle drift with pause/reduced-motion/visibility gates              | Future cinematic mechanics and property ownership remain open; no animation libraries selected      |
 | D10 | Entity asset pipeline            | Sampled-mesh particle approach discussed                                                                                  | Choose source asset, usage rights, sampling approach and visual acceptance                          |
-| D11 | Quality budgets                  | Quality tiers and 60-FPS desktop aspiration                                                                               | Establish measured budgets, devices, thresholds and degradation                                     |
-| D12 | Accessibility / failure policy   | Phase 4.2 implements keyboard/skip navigation, live reduced-motion CSS, and isolated WebGL initialization fallback        | Screen-reader/real-device coverage, future motion, and context-loss recovery remain open            |
-| D13 | Later implementation numbering   | Phases 4.2 and 4.3 explicitly authorized by new tasks; no recovered historical 4.2+ specification                         | Review Phase 4.3 before choosing any next scope; Phase 4.4 not started                              |
+| D11 | Quality budgets                  | Phase 4.4: conservative fixed 280-point field and modest headless renderer measurements                                   | Physical-device budgets, thresholds and adaptation remain open; no achieved 60-FPS claim            |
+| D12 | Accessibility / failure policy   | Native navigation, world initialization fallback and live motion preference plus user pause implemented                   | Screen-reader/real-device coverage, broader motion and context-loss recovery remain open            |
+| D13 | Later implementation numbering   | Phases 4.2–4.4 explicitly authorized by new tasks; no recovered historical later specification                            | Review Phase 4.4 before choosing another scope; humanoid work not started                           |
 | D14 | Backend and publishing           | No selected infrastructure                                                                                                | Decide only when a concrete product requirement needs it                                            |
 
 ## Known defects are not open design decisions
@@ -50,6 +50,14 @@ Explicit intent is a last-activation record with a monotonic mount-local sequenc
 
 Affected modules, exact edge cases and test limits: [Phase 4.3 report](../implementation/phase-reports/phase-4.3-report.md). Cinematic transitions, adaptation and world motion remain open.
 
+## New Phase 4.4 implementation choices — provisional
+
+Date: 2026-10-31. Use one seeded 280-point BufferGeometry/PointsMaterial field, three unequal side pockets, depth from -5 to 0, cyan/soft-white vertex brightness variation, 0.045 world-unit size and 0.48 opacity. Keep the camera at `[0, 0, 6]`, FOV 50. Aspect-scaled composition and a CSS center scrim preserve negative space and text readability. These are prototype values centralized in `src/world/particles/config.ts` and the existing stylesheet, not final art direction or measured adaptive quality.
+
+Use existing R3F scheduling: `always` only while visible, unpaused and not reduced-motion; otherwise `demand`. The frozen pose is the static state. Preserve time across renders/navigation, skip the first enabled frame and clamp frame deltas to 50ms. Keep user pause through preference changes. Pass only motion policy to the world; no unused experience-state wiring, shader framework, textures, postprocessing, humanoid sampling or new dependency.
+
+Mount the DOM synchronously at bootstrap so production initial fragments/restored positions can find their native anchor targets. This corrects a reproduced production startup timing failure without scripted scrolling or history/focus changes. Particle geometry/material ownership remains with R3F. See the [Phase 4.4 report](../implementation/phase-reports/phase-4.4-report.md) for exact values, evidence, measurements and limits.
+
 ## Change log
 
 2026-10-30: Created the documentation baseline from recovered conversation context and the code audit. No historical design gap was silently converted into a final choice. No runtime implementation was changed.
@@ -59,3 +67,5 @@ Affected modules, exact edge cases and test limits: [Phase 4.3 report](../implem
 2026-10-30: Implemented the newly authorized Phase 4.2 shell. Updated D05, D09, D12, and D13 to distinguish provisional implementation choices from remaining decisions. Missing content and historical uncertainty remain explicit.
 
 2026-10-31: Implemented newly scoped Phase 4.3 on reviewed `caa427e`. Updated D08 and D13 for bounded semantic experience state; preserved historical reports and stopped for review.
+
+2026-10-31: Implemented newly scoped Phase 4.4 on reviewed `69d5fcc`, including production native-fragment startup correction. Added measured/visual evidence and stopped for review without humanoid work.

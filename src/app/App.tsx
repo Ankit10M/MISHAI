@@ -1,6 +1,8 @@
 import { WorldCanvas } from '../world/scene/WorldCanvas';
 import { PortfolioShell } from './PortfolioShell';
 import { useExperience } from './useExperience';
+import { useBackgroundMotion } from './useBackgroundMotion';
+import { BackgroundMotionControl } from './BackgroundMotionControl';
 
 /**
  * Application composition root (UI layer).
@@ -11,10 +13,21 @@ import { useExperience } from './useExperience';
  */
 export function App() {
   const { snapshot, recordNavigation } = useExperience();
+  const motion = useBackgroundMotion();
   return (
     <>
-      <WorldCanvas />
-      <PortfolioShell snapshot={snapshot} onNavigate={recordNavigation} />
+      <WorldCanvas motionEnabled={motion.motionEnabled} />
+      <PortfolioShell
+        snapshot={snapshot}
+        onNavigate={recordNavigation}
+        backgroundControl={
+          <BackgroundMotionControl
+            paused={motion.paused}
+            reducedMotion={motion.reducedMotion}
+            onToggle={motion.togglePaused}
+          />
+        }
+      />
     </>
   );
 }

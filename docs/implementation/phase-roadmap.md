@@ -36,18 +36,18 @@ The latest recovered conversation reached the Phase 4.1 IDE-agent instruction. T
 
 ## Actual implementation inventory
 
-Newly authorized implementation, separate from the recovered historical plan: **Phase 4.2 — Semantic Website Shell & Navigation** was reviewed at `caa427e`; its [report](phase-reports/phase-4.2-report.md) remains historical evidence. **Phase 4.3 — Minimal Experience State & Coordination** is complete locally and ready for review. Its [report](phase-reports/phase-4.3-report.md) records the registry, observed section, explicit activation snapshot, native behavior, checks, and limits. Phase 4.4 has not started or been assigned a historical specification.
+Newly authorized implementation, separate from the recovered historical plan: Phase 4.2 was reviewed at `caa427e`, and Phase 4.3 at `69d5fcc`. Their reports remain historical evidence. **Phase 4.4 — World & Particle Prototype** is complete locally and ready for review. Its [report](phase-reports/phase-4.4-report.md) records seeded batched particles, motion controls, native behavior, visual evidence, measured conditions and limits. No later phase or humanoid work has started.
 
 | Capability                                           | Status                                                                                                                  |
 | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | React/TypeScript/Vite/Tailwind setup                 | Present                                                                                                                 |
 | R3F Canvas and rendering defaults                    | Compile blocker fixed; headless Chrome mount and resizing verified                                                      |
-| Scene content                                        | Empty placeholder                                                                                                       |
+| Scene content                                        | One restrained seeded particle field with negative space and stable camera                                              |
 | Experience state / world contract                    | React-owned observed section and separate last activation; typed read-only snapshot, no world consumer or orchestration |
-| Particles / humanoid / shaders                       | Not implemented                                                                                                         |
+| Particles / humanoid / shaders                       | Batched Points prototype implemented; humanoid and custom shaders not implemented                                       |
 | Countdown / Big Bang / chapter sequence              | Not implemented                                                                                                         |
 | Portfolio content / semantic navigation              | Five DOM sections and native anchors implemented; supplied content only, gaps explicit                                  |
-| Interaction / motion / adaptation                    | Not implemented                                                                                                         |
+| Interaction / motion / adaptation                    | Bounded ambient drift, user pause, reduced-motion and visibility policy; no adaptation or cinematic transitions         |
 | Runtime quality / accessibility / resilience systems | Keyboard/skip access, live reduced-motion CSS, and initialization fallback implemented; broader systems remain open     |
 | Documentation                                        | Reconstructed baseline with new phase evidence; Phase 4.2 removed the local docs ignore rule                            |
 

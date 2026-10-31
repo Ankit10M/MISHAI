@@ -25,14 +25,14 @@ Do not add particles, humanoid assets, animation libraries, or a new global stor
 
 ## Proposed now: subsequent dependency order
 
-This is a provisional implementation order, not a recovered historical Phase 4.2+ plan. Phase 4.2 was reviewed at `caa427e`. The user subsequently authorized Phase 4.3: a semantic section registry, observed location, separate explicit activation, current-link feedback, and a bounded read-only world contract. That scoped implementation is complete; see the [Phase 4.3 report](phase-reports/phase-4.3-report.md). Stop for review. No Phase 4.4, world animation, commit, push, or deployment is included.
+This is a provisional implementation order, not a recovered historical Phase 4.2+ plan. Phase 4.3 was reviewed at `69d5fcc`. The user subsequently authorized Phase 4.4: one restrained particle field, stable camera, bounded ambient motion, user pause/reduced-motion/visibility policy, resource checks and visual evidence. That scoped prototype is complete; see the [Phase 4.4 report](phase-reports/phase-4.4-report.md). Stop for review. No humanoid work, later phase, commit, push or deployment is included.
 
 | Work area                                 | Prerequisites / evidence of success                                                                                         |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Semantic shell and access behavior        | Phase 4.2 implemented; keyboard and emulated viewport/fallback checks pass; real touch and screen-reader checks remain open |
 | Minimal experience state and ownership    | Phase 4.3 implemented for semantic sections; observation never issues a command; cinematic chapter interfaces remain open   |
-| World/environment and camera baseline     | Stable orientation, lifecycle cleanup, input-independent readable content                                                   |
-| Particle/entity proof of concept          | Approved visual reference and asset approach; demonstrate fragmented form and measured budget                               |
+| World/environment and camera baseline     | Phase 4.4 prototype: stable camera, readable content, verified pause/preference/visibility and resource lifecycle           |
+| Particle/entity proof of concept          | Particle field implemented in Phase 4.4; entity work still needs an approved reference, asset approach and measured budget  |
 | Narrative transitions and content         | Resolve intro/CREATE order; connect content and world meaningfully                                                          |
 | Coordinated interaction and motion        | Verify causal order, priorities, interruption and settling                                                                  |
 | Bounded adaptation and quality            | Introduce only measured signals and reversible behavior; avoid speculative complexity                                       |

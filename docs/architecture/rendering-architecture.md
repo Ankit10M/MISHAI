@@ -2,27 +2,35 @@
 
 ## Current render path
 
-`main.tsx` mounts `App`; `App` renders independent `WorldCanvas` and `PortfolioShell` siblings. The world boundary contains one fixed, inert canvas behind the DOM content. `WorldCanvas` composes `Scene` inside R3F; `Scene` returns `null`.
+`main.tsx` mounts `App`; `App` renders independent `WorldCanvas` and `PortfolioShell` siblings. The world boundary contains one fixed, inert canvas behind the DOM content. `WorldCanvas` composes `Scene` inside R3F; `Scene` composes one `ParticleField`. Phase 4.4 introduces a bounded spatial prototype, not the cinematic narrative or humanoid.
 
-| Setting                           | Observed value                                         |
-| --------------------------------- | ------------------------------------------------------ |
-| Canvas count                      | One                                                    |
-| Camera position                   | `[0, 0, 6]`                                            |
-| Camera field of view              | `50`                                                   |
-| Antialias                         | Enabled                                                |
-| Alpha                             | Disabled                                               |
-| Background                        | `#05060a`                                              |
-| Requested DPR clamp               | `[1, 2]`                                               |
-| Frame scheduling                  | `frameloop="demand"` for the intentionally empty scene |
-| Scene geometry / lights / effects | None                                                   |
+| Setting                           | Observed value                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------- |
+| Canvas count                      | One                                                                                   |
+| Camera position                   | `[0, 0, 6]`                                                                           |
+| Camera field of view              | `50`                                                                                  |
+| Antialias                         | Enabled                                                                               |
+| Alpha                             | Disabled                                                                              |
+| Background                        | `#05060a`                                                                             |
+| Requested DPR clamp               | `[1, 2]`                                                                              |
+| Frame scheduling                  | `always` only when visible, unpaused and motion permitted; otherwise `demand`         |
+| Scene geometry / lights / effects | One Points / BufferGeometry / PointsMaterial; 280 points, no lights or postprocessing |
 
 These are foundation defaults, not completed art direction. The DPR constant now uses the mutable `[number, number]` tuple type accepted by R3F, preserving `[1, 2]`. Build and headless Chrome mount/resize checks pass; see the [Phase 4.1 report](../implementation/phase-reports/phase-4.1-report.md) for evidence and limitations.
 
 Phase 4.2 constructs the Three renderer synchronously in the Canvas callback ref, passes it through R3F's supported `gl` factory, and lets a React boundary isolate initialization errors. Installed R3F's `fallback` prop only supplies canvas fallback HTML, and its asynchronous renderer configure call does not route initialization rejection into that boundary. Deliberately unavailable WebGL and thrown initialization errors were both tested; semantic content remains usable. See the [Phase 4.2 report](../implementation/phase-reports/phase-4.2-report.md).
 
-Canvas sizing and teardown stay with R3F. There is no continuous animation in the empty world. Demand rendering is a new bounded idle policy, not adaptive quality or a measured performance improvement. Revisit explicit invalidation when animated scene systems are approved.
+Canvas sizing and teardown stay with R3F. Phase 4.4 switches its existing loop between `always` and `demand`; no second animation loop is created. A paused or reduced-motion field freezes at its current bounded pose (the deterministic time-zero pose on initial load). R3F still renders resize and changed scene properties on demand. Hidden tabs also disable motion. A local time ref advances only during enabled frames, skips the first frame after a policy change, and caps each delta at 50ms. It does not use the clock's elapsed time, which R3F resets when changing frame modes.
 
-Phase 4.3 keeps DOM measurements and native navigation in the application layer. App owns a read-only `ExperienceSnapshot` that a future world consumer may receive through a typed prop; the empty scene does not consume it yet. Observed location is separate from the last explicit anchor activation. No measurement, frame subscription, dummy transition, or animation invalidation was added inside R3F. See [application boundaries](application-boundaries.md).
+Phase 4.3 keeps DOM measurements and native navigation in the application layer. App still owns its read-only `ExperienceSnapshot`; the particle prototype does not consume it. WorldCanvas, Scene and ParticleField receive only `motionEnabled`. Observed location and historical explicit navigation retain their existing semantics. See [application boundaries](application-boundaries.md).
+
+## Particle prototype ownership
+
+`src/world/particles/config.ts` centralizes the seed, count, camera projection used for composition, three uneven side pockets, depth, linear RGB colors, brightness, size, opacity, drift and speed. `generateParticles.ts` creates deterministic typed position/color/phase arrays and supplies an in-place bounded motion function. `ParticleField.tsx` owns memoized CPU arrays and the declarative Three resources. Scene remains a composition root.
+
+The position generator uses depth-dependent projection to preserve intentional screen-space negative space. A single Points object's X scale follows the viewport aspect; count and geometry stay fixed across wide/narrow layouts. This is responsive composition, not capability detection or adaptive quality. Perspective point-size attenuation and varying brightness convey depth. A CSS dark center scrim further protects text. No custom shader or texture is needed at this count.
+
+Installed R3F's `removeChild` recursively disposes declarative geometry/materials through `disposeOnIdle`; geometry disposal releases its GPU attribute buffers. The root teardown disconnects events, clears render lists, forces context loss and releases the scene after its existing delay. No manual disposal or `primitive` ownership bypass was added. Two StrictMode fixture cycles verified geometry/material disposal, zero remaining geometry/program counts and motion-listener cleanup. This is a bounded lifecycle check, not a long-session memory-leak audit. See the [Phase 4.4 report](../implementation/phase-reports/phase-4.4-report.md).
 
 ## Recovered rendering direction
 
@@ -45,4 +53,4 @@ Camera movement must be purposeful and restrained. Exact camera paths, scroll ma
 
 ## Not implemented
 
-Particle buffers, humanoid asset sampling, shader effects, postprocessing, camera controller, narrative-to-world mapping, quality adaptation, motion policy for future scene objects, and context-loss recovery remain pending. Initialization fallback and reduced-motion-safe DOM navigation are implemented; they are not full resilience or accessibility systems.
+Humanoid asset sampling, custom shader effects, postprocessing, camera choreography, narrative-to-world mapping, adaptive quality, broader motion coordination and runtime context-loss recovery remain pending. Initialization fallback, native DOM navigation, background pause and live reduced-motion handling are implemented; they are not complete resilience or accessibility systems.

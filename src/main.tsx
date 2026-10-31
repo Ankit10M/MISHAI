@@ -1,4 +1,5 @@
 import { StrictMode } from 'react';
+import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 
 import { App } from './app/App';
@@ -12,8 +13,11 @@ if (!container) {
   throw new Error('Root container #root was not found in index.html');
 }
 
-createRoot(container).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+// Mount anchor targets before native initial-fragment and scroll-restoration processing.
+flushSync(() => {
+  createRoot(container).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );
+});

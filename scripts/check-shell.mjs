@@ -1,52 +1,11 @@
 // Run against Vite with a disposable Chrome profile listening on localhost:9222.
 import assert from 'node:assert/strict';
+import { browserSession } from './browser-session.mjs';
 import { sections } from '../src/app/sections.ts';
 
 const origin = process.argv[2] ?? 'http://127.0.0.1:5173';
-const page = await (
-  await fetch('http://127.0.0.1:9222/json/new?about:blank', { method: 'PUT' })
-).json();
-const socket = new WebSocket(page.webSocketDebuggerUrl);
-await new Promise((resolve) => socket.addEventListener('open', resolve, { once: true }));
-const pending = new Map();
-const messages = [];
-let nextId = 0;
-socket.addEventListener('message', ({ data }) => {
-  const message = JSON.parse(data);
-  if (message.id) {
-    const request = pending.get(message.id);
-    pending.delete(message.id);
-    if (message.error) request.reject(new Error(JSON.stringify(message.error)));
-    else request.resolve(message.result);
-  } else if (
-    [
-      'Runtime.exceptionThrown',
-      'Runtime.consoleAPICalled',
-      'Network.loadingFailed',
-      'Log.entryAdded',
-    ].includes(message.method)
-  ) {
-    messages.push(message);
-  }
-});
-
-function send(method, params = {}) {
-  return new Promise((resolve, reject) => {
-    const id = ++nextId;
-    pending.set(id, { resolve, reject });
-    socket.send(JSON.stringify({ id, method, params }));
-  });
-}
-
-async function evaluate(expression) {
-  const result = await send('Runtime.evaluate', {
-    expression,
-    awaitPromise: true,
-    returnByValue: true,
-  });
-  assert.equal(result.exceptionDetails, undefined, JSON.stringify(result.exceptionDetails));
-  return result.result.value;
-}
+const fixtureOrigin = process.argv[3] ?? origin;
+const { send, evaluate, messages, close } = await browserSession();
 
 async function waitFor(expression) {
   for (let attempt = 0; attempt < 100; attempt++) {
@@ -219,6 +178,8 @@ try {
     'PASS live reduced-motion changes; inert, noninteractive canvas; unavailable email has no fake action',
   );
 
+  await send('Page.navigate', { url: 'about:blank' });
+  await waitFor('location.href === "about:blank"');
   await navigate('#projects');
   await active('projects');
   await send('Page.reload');
@@ -332,7 +293,7 @@ try {
     await send('Page.removeScriptToEvaluateOnNewDocument', { identifier: injection.identifier });
   }
 
-  await send('Page.navigate', { url: `${origin}/scripts/experience-fixture.html` });
+  await send('Page.navigate', { url: `${fixtureOrigin}/scripts/experience-fixture.html` });
   await waitFor('Boolean(window.experienceTest?.read().snapshot)');
   await evaluate('window.scrollTo({top:0,behavior:"instant"})');
   await active(null);
@@ -379,6 +340,7 @@ try {
     features: [{ name: 'prefers-reduced-motion', value: 'reduce' }],
   });
   await evaluate(`document.querySelector('nav a[href="#creator"]').focus()`);
+  await active(null);
   await key('Enter', 'Enter', 13);
   await active('creator');
   assert.deepEqual(
@@ -438,6 +400,5 @@ try {
     'All Phase 4.2 and 4.3 browser assertions passed. Failure injection intentionally produces renderer/React error diagnostics.',
   );
 } finally {
-  await send('Page.close');
-  socket.close();
+  await close();
 }

@@ -59,9 +59,11 @@ const sectionBodies = {
 export function PortfolioShell({
   snapshot,
   onNavigate,
+  backgroundControl,
 }: {
   snapshot: ExperienceSnapshot;
   onNavigate: (section: SectionId) => void;
+  backgroundControl?: ReactNode;
 }) {
   return (
     <div className="portfolio-shell">
@@ -91,6 +93,7 @@ export function PortfolioShell({
             ))}
           </ul>
         </nav>
+        {backgroundControl}
       </header>
 
       <main className="page-width" id="content" tabIndex={-1}>

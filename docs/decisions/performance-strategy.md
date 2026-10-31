@@ -1,6 +1,6 @@
 # Performance and resilience strategy
 
-Status: recovered principles plus proposed validation approach. No runtime performance measurements exist in this audit.
+Status: recovered principles plus a bounded Phase 4.4 headless renderer sample. No physical-device performance budget has been established.
 
 ## Recovered policy
 
@@ -17,7 +17,15 @@ Status: recovered principles plus proposed validation approach. No runtime perfo
 
 The renderer requests a DPR clamp of `[1, 2]`. The upper bound limits pixel-density cost compared with an unconstrained higher DPR; the lower bound is a floor, not a mechanism for reducing work below DPR 1. The Phase 4.1 closure corrected the code comment and verified both bounds in headless Chrome. This is functional evidence, not a performance benchmark.
 
-Phase 4.2 sets `frameloop="demand"` for the empty scene and uses a live CSS reduced-motion query to disable smooth anchor scrolling. No animation/transitions are otherwise introduced. Canvas initialization failure shows a DOM status while content and navigation remain usable. Chapter windowing, context-loss recovery, and measured adaptive quality remain unimplemented. No performance benchmark is claimed.
+Phase 4.4 replaces the empty scene with 280 seeded points in one geometry/material/draw call. Count is identical at wide and narrow sizes; only aspect-scaled composition changes. This is a conservative static prototype choice, not measured adaptive quality. There are no textures, postprocessing, custom shaders or per-particle React components. Each animated frame mutates one existing position buffer; no per-frame arrays or React state updates are created.
+
+R3F runs continuously only while the page is visible, user motion is enabled and reduced motion is not requested. Otherwise it uses demand rendering and freezes the current pose. First-frame skipping and a 50ms delta cap prevent catch-up after inactivity. Resize still renders in static mode. Native DOM smooth scrolling retains its independent live CSS reduced-motion rule. Initialization failure still shows a DOM status while navigation/tracking remain usable.
+
+## Phase 4.4 measurement boundary
+
+Development and production-preview checks in headless Chrome on Windows reported ANGLE / Intel Iris Xe / Direct3D11, 280 points, one draw call, one geometry, one program and zero textures. Tested CSS viewports included 1440 × 900 and 390 × 844 at DPR 1, plus a wide resize at DPR 2. A modest approximately three-second sample records render-entry intervals; it is not GPU execution time, physical-mobile evidence or an achieved 60-FPS claim. Exact conditions and saved metrics are in the [Phase 4.4 report](../implementation/phase-reports/phase-4.4-report.md).
+
+Static settling, real tab hiding, bounded resume movement, geometry/material identity through navigation and two StrictMode disposal cycles pass. Resource counts return to zero after teardown in the fixture. Long-run memory, thermal/power behavior, context restoration and other browsers remain unverified. The existing Clock deprecation and large JavaScript bundle warning are unchanged; no thresholds or dependencies were altered to conceal them.
 
 ## Proposed now: measurement approach
 
