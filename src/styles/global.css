@@ -133,6 +133,12 @@ nav a {
   font-size: 0.875rem;
 }
 
+nav a[aria-current='location'] {
+  text-decoration-line: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.4em;
+}
+
 .introduction {
   padding-block: clamp(4rem, 10vw, 8rem);
 }

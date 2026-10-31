@@ -22,6 +22,8 @@ Phase 4.2 constructs the Three renderer synchronously in the Canvas callback ref
 
 Canvas sizing and teardown stay with R3F. There is no continuous animation in the empty world. Demand rendering is a new bounded idle policy, not adaptive quality or a measured performance improvement. Revisit explicit invalidation when animated scene systems are approved.
 
+Phase 4.3 keeps DOM measurements and native navigation in the application layer. App owns a read-only `ExperienceSnapshot` that a future world consumer may receive through a typed prop; the empty scene does not consume it yet. Observed location is separate from the last explicit anchor activation. No measurement, frame subscription, dummy transition, or animation invalidation was added inside R3F. See [application boundaries](application-boundaries.md).
+
 ## Recovered rendering direction
 
 The universe should have persistent spatial continuity. Entity formation, particles, environment, and camera evolve with narrative state while semantic content stays independently usable.

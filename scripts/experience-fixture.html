@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Experience lifecycle check</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import { createElement, StrictMode } from 'react';
+      import { createRoot } from 'react-dom/client';
+      import { PortfolioShell } from '/src/app/PortfolioShell.tsx';
+      import { useExperience } from '/src/app/useExperience.ts';
+      import '/src/styles/global.css';
+
+      // Test-only fixture: observe the public snapshot and StrictMode effect lifecycle.
+      const subscriptions = new Map();
+      const added = window.addEventListener.bind(window);
+      const removed = window.removeEventListener.bind(window);
+      window.addEventListener = (type, listener, options) => {
+        if (['scroll', 'resize', 'pageshow', 'hashchange'].includes(type)) {
+          if (!subscriptions.has(type)) subscriptions.set(type, new Set());
+          subscriptions.get(type).add(listener);
+        }
+        added(type, listener, options);
+      };
+      window.removeEventListener = (type, listener, options) => {
+        subscriptions.get(type)?.delete(listener);
+        removed(type, listener, options);
+      };
+      const NativeResizeObserver = window.ResizeObserver;
+      let observers = 0;
+      window.ResizeObserver = class extends NativeResizeObserver {
+        constructor(callback) {
+          super(callback);
+          observers++;
+        }
+        disconnect() {
+          observers--;
+          super.disconnect();
+        }
+      };
+
+      let renders = 0;
+      let snapshot;
+      function Fixture() {
+        const experience = useExperience();
+        snapshot = experience.snapshot;
+        renders++;
+        return createElement(PortfolioShell, {
+          snapshot,
+          onNavigate: experience.recordNavigation,
+        });
+      }
+      let root;
+      window.experienceTest = {
+        mount() {
+          root = createRoot(document.getElementById('root'));
+          root.render(createElement(StrictMode, null, createElement(Fixture)));
+        },
+        unmount() {
+          root.unmount();
+        },
+        read() {
+          return {
+            snapshot,
+            renders,
+            observers,
+            subscriptions: Object.fromEntries(
+              [...subscriptions].map(([type, listeners]) => [type, listeners.size]),
+            ),
+          };
+        },
+      };
+      window.experienceTest.mount();
+    </script>
+  </body>
+</html>

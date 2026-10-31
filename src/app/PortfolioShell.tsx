@@ -1,14 +1,68 @@
+import type { ReactNode } from 'react';
 import { portfolio } from '../content/portfolio';
+import { isSectionActivation, type ExperienceSnapshot } from './experience';
+import { sections, type SectionId } from './sections';
 
-const sections = [
-  { id: 'creator', label: 'Creator' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills & Technology' },
-  { id: 'experience', label: 'Work Experience' },
-  { id: 'contact', label: 'Contact' },
-];
+const sectionBodies = {
+  creator: (
+    <div className="section-body">
+      <p className="section-lead">{portfolio.creator.name}</p>
+      <p className="content-note">{portfolio.creator.biography ?? 'Biography not yet supplied.'}</p>
+    </div>
+  ),
+  projects: (
+    <div className="section-body">
+      <p className="content-note">Project descriptions, images, and links are not yet supplied.</p>
+      <ol className="project-list">
+        {portfolio.projects.map((project) => (
+          <li key={project}>
+            <h3>{project}</h3>
+          </li>
+        ))}
+      </ol>
+    </div>
+  ),
+  skills: (
+    <div className="section-body">
+      <ul className="skills-list">
+        {portfolio.skills.map((skill) => (
+          <li key={skill}>{skill}</li>
+        ))}
+      </ul>
+    </div>
+  ),
+  experience: (
+    <div className="section-body">
+      <p className="eyebrow">{portfolio.experience.period}</p>
+      <h3>{portfolio.experience.role}</h3>
+      <p>{portfolio.experience.employer}</p>
+      <p className="content-note">
+        {portfolio.experience.details ??
+          'Role details not yet supplied. Current role status awaits confirmation before publication.'}
+      </p>
+    </div>
+  ),
+  contact: (
+    <div className="section-body">
+      <p className="section-lead">Email</p>
+      {portfolio.email ? (
+        <a href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
+      ) : (
+        <p className="content-note">
+          Email contact is unavailable. An address has not yet been supplied.
+        </p>
+      )}
+    </div>
+  ),
+} satisfies Record<SectionId, ReactNode>;
 
-export function PortfolioShell() {
+export function PortfolioShell({
+  snapshot,
+  onNavigate,
+}: {
+  snapshot: ExperienceSnapshot;
+  onNavigate: (section: SectionId) => void;
+}) {
   return (
     <div className="portfolio-shell">
       <a className="skip-link" href="#content">
@@ -24,7 +78,15 @@ export function PortfolioShell() {
           <ul>
             {sections.map(({ id, label }) => (
               <li key={id}>
-                <a href={`#${id}`}>{label}</a>
+                <a
+                  href={`#${id}`}
+                  aria-current={snapshot.activeSection === id ? 'location' : undefined}
+                  onClick={(event) => {
+                    if (isSectionActivation(event)) onNavigate(id);
+                  }}
+                >
+                  {label}
+                </a>
               </li>
             ))}
           </ul>
@@ -38,104 +100,21 @@ export function PortfolioShell() {
           <p className="intro-note">A portfolio in progress.</p>
         </div>
 
-        <section
-          className="content-section"
-          id="creator"
-          aria-labelledby="creator-heading"
-          tabIndex={-1}
-        >
-          <h2 id="creator-heading">
-            <span aria-hidden="true">01 / </span>Creator
-          </h2>
-          <div className="section-body">
-            <p className="section-lead">{portfolio.creator.name}</p>
-            <p className="content-note">
-              {portfolio.creator.biography ?? 'Biography not yet supplied.'}
-            </p>
-          </div>
-        </section>
-
-        <section
-          className="content-section"
-          id="projects"
-          aria-labelledby="projects-heading"
-          tabIndex={-1}
-        >
-          <h2 id="projects-heading">
-            <span aria-hidden="true">02 / </span>Projects
-          </h2>
-          <div className="section-body">
-            <p className="content-note">
-              Project descriptions, images, and links are not yet supplied.
-            </p>
-            <ol className="project-list">
-              {portfolio.projects.map((project) => (
-                <li key={project}>
-                  <h3>{project}</h3>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section
-          className="content-section"
-          id="skills"
-          aria-labelledby="skills-heading"
-          tabIndex={-1}
-        >
-          <h2 id="skills-heading">
-            <span aria-hidden="true">03 / </span>Skills &amp; Technology
-          </h2>
-          <div className="section-body">
-            <ul className="skills-list">
-              {portfolio.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section
-          className="content-section"
-          id="experience"
-          aria-labelledby="experience-heading"
-          tabIndex={-1}
-        >
-          <h2 id="experience-heading">
-            <span aria-hidden="true">04 / </span>Work Experience
-          </h2>
-          <div className="section-body">
-            <p className="eyebrow">{portfolio.experience.period}</p>
-            <h3>{portfolio.experience.role}</h3>
-            <p>{portfolio.experience.employer}</p>
-            <p className="content-note">
-              {portfolio.experience.details ??
-                'Role details not yet supplied. Current role status awaits confirmation before publication.'}
-            </p>
-          </div>
-        </section>
-
-        <section
-          className="content-section"
-          id="contact"
-          aria-labelledby="contact-heading"
-          tabIndex={-1}
-        >
-          <h2 id="contact-heading">
-            <span aria-hidden="true">05 / </span>Contact
-          </h2>
-          <div className="section-body">
-            <p className="section-lead">Email</p>
-            {portfolio.email ? (
-              <a href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
-            ) : (
-              <p className="content-note">
-                Email contact is unavailable. An address has not yet been supplied.
-              </p>
-            )}
-          </div>
-        </section>
+        {sections.map(({ id, label }, index) => (
+          <section
+            key={id}
+            className="content-section"
+            id={id}
+            aria-labelledby={`${id}-heading`}
+            tabIndex={-1}
+          >
+            <h2 id={`${id}-heading`}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, '0')} / </span>
+              {label}
+            </h2>
+            {sectionBodies[id]}
+          </section>
+        ))}
       </main>
       <footer className="site-footer page-width">
         <p>{portfolio.creator.name} / Portfolio in progress</p>

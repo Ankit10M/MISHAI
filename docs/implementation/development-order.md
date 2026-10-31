@@ -25,12 +25,12 @@ Do not add particles, humanoid assets, animation libraries, or a new global stor
 
 ## Proposed now: subsequent dependency order
 
-This is a provisional implementation order, not a recovered historical Phase 4.2+ plan. The user subsequently authorized Phase 4.2: the semantic shell, native navigation, reduced-motion handling, and WebGL initialization fallback. That bounded implementation is now complete; see the [Phase 4.2 report](phase-reports/phase-4.2-report.md). Review it before selecting another scope; no Phase 4.3 work has started.
+This is a provisional implementation order, not a recovered historical Phase 4.2+ plan. Phase 4.2 was reviewed at `caa427e`. The user subsequently authorized Phase 4.3: a semantic section registry, observed location, separate explicit activation, current-link feedback, and a bounded read-only world contract. That scoped implementation is complete; see the [Phase 4.3 report](phase-reports/phase-4.3-report.md). Stop for review. No Phase 4.4, world animation, commit, push, or deployment is included.
 
 | Work area                                 | Prerequisites / evidence of success                                                                                         |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Semantic shell and access behavior        | Phase 4.2 implemented; keyboard and emulated viewport/fallback checks pass; real touch and screen-reader checks remain open |
-| Minimal experience state and ownership    | Define actual chapter/event interfaces; one writer per property; verify explicit user actions dominate inference            |
+| Minimal experience state and ownership    | Phase 4.3 implemented for semantic sections; observation never issues a command; cinematic chapter interfaces remain open   |
 | World/environment and camera baseline     | Stable orientation, lifecycle cleanup, input-independent readable content                                                   |
 | Particle/entity proof of concept          | Approved visual reference and asset approach; demonstrate fragmented form and measured budget                               |
 | Narrative transitions and content         | Resolve intro/CREATE order; connect content and world meaningfully                                                          |

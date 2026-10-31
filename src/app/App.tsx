@@ -1,5 +1,6 @@
 import { WorldCanvas } from '../world/scene/WorldCanvas';
 import { PortfolioShell } from './PortfolioShell';
+import { useExperience } from './useExperience';
 
 /**
  * Application composition root (UI layer).
@@ -9,10 +10,11 @@ import { PortfolioShell } from './PortfolioShell';
  * See docs/architecture/application-boundaries.md.
  */
 export function App() {
+  const { snapshot, recordNavigation } = useExperience();
   return (
     <>
       <WorldCanvas />
-      <PortfolioShell />
+      <PortfolioShell snapshot={snapshot} onNavigate={recordNavigation} />
     </>
   );
 }
