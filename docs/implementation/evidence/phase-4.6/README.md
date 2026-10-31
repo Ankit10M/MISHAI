@@ -1,0 +1,25 @@
+# Phase 4.6 transition evidence
+
+Captured on 2026-10-31 from `/dev/entity.html` using headless Chrome 156.0.8078.74 on Windows, ANGLE / Intel Iris Xe / Direct3D11. Entity captures use DPR 1. Narrow emulation is not physical-device evidence.
+
+| Artifact                                                                                                                               | Conditions / purpose                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| [dispersed.png](dispersed.png)                                                                                                         | Progress 0, front, 1440 × 1000; spatial distribution without a humanoid silhouette.                                    |
+| [intermediate.png](intermediate.png)                                                                                                   | Progress 0.5 with identical wide framing; inspect volume and convergence.                                              |
+| [settled.png](settled.png)                                                                                                             | Progress 1 with identical wide framing; exact Phase 4.5 positions and gaps.                                            |
+| [narrow-intermediate.png](narrow-intermediate.png)                                                                                     | Progress 0.5, three-quarter, 390 × 844 emulation; full-document capture includes natural vertical overflow.            |
+| [motion.webm](motion.webm)                                                                                                             | Roughly 15.4 seconds, canvas-only, 20 FPS requested recording rate; this is not an achieved rendering FPS measurement. |
+| [motion-strip.jpg](motion-strip.jpg)                                                                                                   | Twelve decoded times from the recording, with original aspect ratio preserved.                                         |
+| [metrics.json](metrics.json)                                                                                                           | Actual renderer/viewport/buffer/progress/resource samples, reversal/resume step bounds and recording command times.    |
+| [settled-regression/metrics.json](settled-regression/metrics.json)                                                                     | Original entity-browser assertions retained, with fresh captures beside the metrics.                                   |
+| [Development ambient metrics](regressions/development-metrics.json), [production ambient metrics](regressions/production-metrics.json) | Public-world regression observations; historical evidence is untouched.                                                |
+
+Recording input timeline (actual timestamps/progress are in metrics): Form at start; reverse with Dissolve at about 1.8s; Pause at 2.5s; Resume at 3.2s; Form from dispersion at 4.6s; Dissolve from settled at 10s; stop recording at about 15.4s. Frames before and during the pause (2.35/2.9 seconds), followed by resumed motion, help inspect the interruption sequence. Canvas-only recording excludes controls/status; screenshots document the DOM surface.
+
+Still captures and sampled video frames were inspected. The dispersed cloud is bounded, the midpoint has depth, and the settled figure matches the preserved anatomy. The sampled motion shows contraction, retracing, a paused hold and resumed motion without observed teleportation/reseeding. Direct real-time playback, physical-display comfort and final motion approval remain unverified.
+
+Full-body rendering uses 2,600 points in one draw, one geometry/program and zero textures. Geometry/material and position/color/index attribute identities persist through playback, views, regions and resizing. Static scheduling settles; two active unmount cycles remove listeners, release resources/context and stop progress advancement. These observations do not establish mobile performance, GPU time or long-run memory behavior.
+
+The inherited probe's `aspect` field is Points X scale; use `cameraAspect` and buffer dimensions for framing. `maxStep` includes intentional scrub/immediate endpoint jumps, so use the dedicated reversal/resume progress-step measurements for bounded playback. Teardown draw counts retain the last rendered frame and do not indicate continued rendering.
+
+Regenerate with `node scripts/check-transition-browser.mjs` after starting Vite and disposable Chrome debugging on ports 5173 and 9222. This overwrites the Phase 4.6 transition artifacts. See the [report](../../phase-reports/phase-4.6-report.md) for full commands, history-preserving regression overrides, controller semantics and limits.

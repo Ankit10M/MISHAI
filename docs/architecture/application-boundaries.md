@@ -44,6 +44,10 @@ The public WorldCanvas now delegates its existing Canvas/renderer implementation
 
 `/dev/entity.html` is a local Vite entry, omitted from production output. A build-graph guard and output/network checks enforce that isolation. Region labels map to conceptual body meaning but do not create chapter behavior. Public motion control now says “Background motion off” while reduced motion disables it; the stored pause choice is unchanged.
 
+## Phase 4.6 transition ownership
+
+Phase 4.6 adds one development-only controller for normalized entity progress, destination and playback intent. `useSyncExternalStore` supplies stable snapshots on commands, policy changes and completion; frames mutate controller progress without notifying React. EntityPoints is the sole writer of runtime positions and uses R3F's frame loop. The preview owns view/region controls and reset; neither world nor controls consume/write the Phase 4.3 experience snapshot. `observeMotionPolicy` centralizes only media/visibility listeners; ambient pause and entity endpoint/inspection semantics remain separate. See the [Phase 4.6 report](../implementation/phase-reports/phase-4.6-report.md).
+
 ## Recovered architecture intent
 
 - React / semantic DOM owns readable content, navigation, controls, and accessible feedback.

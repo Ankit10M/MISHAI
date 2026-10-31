@@ -33,6 +33,10 @@ The development-only humanoid has a fixed prototype budget of 2,600 particles, o
 
 Wide/narrow captures, actual viewport/DPR/resource data and two cleanup cycles are recorded in the [Phase 4.5 report](../implementation/phase-reports/phase-4.5-report.md). No FPS claim is made for a static scene, and particle count alone is not a device performance measurement. Mobile hardware, long-session memory and final visual budgets remain open.
 
+## Phase 4.6 transition budget
+
+Phase 4.6 keeps the same fixed entity budget and resources while evaluating one preallocated position buffer during transitions. It uses a five-second normalized duration, caps frame deltas at 50ms, and stops in demand mode after pause/completion. No per-frame React notifications or second animation loop exist. The source arrays and position/color/index attributes remain stable. New transition and active-unmount evidence is in the [Phase 4.6 report](../implementation/phase-reports/phase-4.6-report.md); earlier static observations remain historical. Expanded fixed framing fits the entire motion, and no performance claim is inferred from particle count.
+
 ## Proposed now: measurement approach
 
 Establish baseline measurements only after the build and browser runtime work. Record the device, browser, viewport, DPR, feature set, and scenario for each measurement.

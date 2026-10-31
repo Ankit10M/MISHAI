@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { observeMotionPolicy } from './observeMotionPolicy';
 
 export function useBackgroundMotion() {
   const [paused, setPaused] = useState(false);
@@ -7,19 +8,14 @@ export function useBackgroundMotion() {
   );
   const [visible, setVisible] = useState(() => document.visibilityState === 'visible');
 
-  useEffect(() => {
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const updatePreference = () => setReducedMotion(preference.matches);
-    const updateVisibility = () => setVisible(document.visibilityState === 'visible');
-    preference.addEventListener('change', updatePreference);
-    document.addEventListener('visibilitychange', updateVisibility);
-    updatePreference();
-    updateVisibility();
-    return () => {
-      preference.removeEventListener('change', updatePreference);
-      document.removeEventListener('visibilitychange', updateVisibility);
-    };
-  }, []);
+  useEffect(
+    () =>
+      observeMotionPolicy((reduced, isVisible) => {
+        setReducedMotion(reduced);
+        setVisible(isVisible);
+      }),
+    [],
+  );
 
   return {
     paused,

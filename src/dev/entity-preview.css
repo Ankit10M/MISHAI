@@ -54,10 +54,21 @@
   border-color: var(--accent);
 }
 
+.entity-toolbar input[type='range'] {
+  min-height: 44px;
+  width: 10rem;
+  accent-color: var(--accent);
+}
+
+.entity-toolbar button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
 .entity-stage {
   position: relative;
   flex: 1;
-  min-height: 24rem;
+  min-height: 20rem;
 }
 
 .entity-surface {

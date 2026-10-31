@@ -36,19 +36,19 @@ The latest recovered conversation reached the Phase 4.1 IDE-agent instruction. T
 
 ## Actual implementation inventory
 
-Newly authorized implementation, separate from the recovered historical plan: Phase 4.4 was reviewed at `1bb4e4b`; earlier reports and evidence remain historical. **Phase 4.5 — Fragmented Humanoid Prototype** is complete locally and ready for review. Its [report](phase-reports/phase-4.5-report.md) records the original procedural proxy, deterministic region-tagged particles, isolated development preview, visual evidence and limits. Formation/dissolution and later phases have not started; final anatomy is not approved.
+Newly authorized implementation, separate from the recovered historical plan: Phase 4.5 was reviewed at `ea127e0`; earlier reports and evidence remain historical. **Phase 4.6 — Reversible Entity Formation & Dissolution** is complete locally and ready for review. Its [report](phase-reports/phase-4.6-report.md) records stable transition data, reversible control, preference/visibility semantics, fixed framing and motion evidence. The settled proxy is preserved; final art direction and motion quality remain provisional. Chapter integration and later phases have not started.
 
-| Capability                                           | Status                                                                                                                  |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| React/TypeScript/Vite/Tailwind setup                 | Present                                                                                                                 |
-| R3F Canvas and rendering defaults                    | Compile blocker fixed; headless Chrome mount and resizing verified                                                      |
-| Scene content                                        | One restrained seeded particle field with negative space and stable camera                                              |
-| Experience state / world contract                    | React-owned observed section and separate last activation; typed read-only snapshot, no world consumer or orchestration |
-| Particles / humanoid / shaders                       | Public ambient field plus separate static procedural humanoid preview; no production reveal or custom shaders           |
-| Countdown / Big Bang / chapter sequence              | Not implemented                                                                                                         |
-| Portfolio content / semantic navigation              | Five DOM sections and native anchors implemented; supplied content only, gaps explicit                                  |
-| Interaction / motion / adaptation                    | Bounded ambient drift, user pause, reduced-motion and visibility policy; no adaptation or cinematic transitions         |
-| Runtime quality / accessibility / resilience systems | Keyboard/skip access, live reduced-motion CSS, and initialization fallback implemented; broader systems remain open     |
-| Documentation                                        | Reconstructed baseline with new phase evidence; Phase 4.2 removed the local docs ignore rule                            |
+| Capability                                           | Status                                                                                                                            |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| React/TypeScript/Vite/Tailwind setup                 | Present                                                                                                                           |
+| R3F Canvas and rendering defaults                    | Compile blocker fixed; headless Chrome mount and resizing verified                                                                |
+| Scene content                                        | One restrained seeded particle field with negative space and stable camera                                                        |
+| Experience state / world contract                    | React-owned observed section and separate last activation; typed read-only snapshot, no world consumer or orchestration           |
+| Particles / humanoid / shaders                       | Public ambient field plus separate reversible procedural humanoid preview; no production reveal or custom shaders                 |
+| Countdown / Big Bang / chapter sequence              | Not implemented                                                                                                                   |
+| Portfolio content / semantic navigation              | Five DOM sections and native anchors implemented; supplied content only, gaps explicit                                            |
+| Interaction / motion / adaptation                    | Ambient motion policy and development entity formation/dissolution with reversible commands; no chapter integration or adaptation |
+| Runtime quality / accessibility / resilience systems | Keyboard/skip access, live reduced-motion CSS, and initialization fallback implemented; broader systems remain open               |
+| Documentation                                        | Reconstructed baseline with new phase evidence; Phase 4.2 removed the local docs ignore rule                                      |
 
 For resumption, use [development order](development-order.md). Do not assign completion percentages without a defined scope and acceptance criteria.

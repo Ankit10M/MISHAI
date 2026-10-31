@@ -16,7 +16,7 @@ Status: explicit unknowns. Resolve items when the next scoped task depends on th
 | D10 | Entity asset pipeline            | Phase 4.5 supplies an original smooth procedural proxy and deterministic sampling boundary for development review         | Approve final proportions/gaps and any replacement mesh with usage rights before later integration  |
 | D11 | Quality budgets                  | Phase 4.4: conservative fixed 280-point field and modest headless renderer measurements                                   | Physical-device budgets, thresholds and adaptation remain open; no achieved 60-FPS claim            |
 | D12 | Accessibility / failure policy   | Native navigation, world initialization fallback and live motion preference plus user pause implemented                   | Screen-reader/real-device coverage, broader motion and context-loss recovery remain open            |
-| D13 | Later implementation numbering   | Phases 4.2–4.5 authorized through new tasks, separate from historical planning                                            | Review Phase 4.5 settled entity before formation; no later phase started                            |
+| D13 | Later implementation numbering   | Phases 4.2–4.6 authorized through new tasks, separate from historical planning                                            | Review Phase 4.6 reversible mechanics before chapter integration; no later phase started            |
 | D14 | Backend and publishing           | No selected infrastructure                                                                                                | Decide only when a concrete product requirement needs it                                            |
 
 ## Known defects are not open design decisions
@@ -66,6 +66,12 @@ Stable accepted-sample IDs and discrete region tags support head/identity, arms/
 
 The local `/dev/entity.html` review entry uses one shared rendering surface in demand mode and is excluded from the normal application's module graph and production output. The build rejects accidental entity/development imports. The public portfolio is unchanged except the requested reduced-motion label correction. See the [Phase 4.5 report](../implementation/phase-reports/phase-4.5-report.md) for visual assessment, exact parameters, evidence and limits.
 
+## New Phase 4.6 implementation choices — provisional
+
+Date: 2026-10-31. The user accepted Phase 4.5 at `ea127e0` as a working procedural proxy. Preserve its source/sampling/region data. Seed `4606` creates a separate dispersed box (X ±2, Y ±2.25, Z ±1.3) in existing particle order. Normalized progress uses smoothstep interpolation along straight paths, with exact array-copy endpoints, five-second full-range duration and 50ms capped simulation steps. No curved excursion, physics, region sequencing, new anatomy or external asset is needed.
+
+One controller owns progress and destination; opposite commands reverse from the current value, repeated active commands do nothing, scrubbing pauses, and reset restores settled/front/all. Reduced motion settles active requests immediately while preserving paused inspection. Hidden tabs suspend active intent and never replay elapsed time. React receives meaningful state changes only; the slider is explicitly an inspection control, not a live progress percentage. Fixed union framing replaces settled-only preview framing. These choices validate mechanics, not final motion approval or chapter integration. See the [Phase 4.6 report](../implementation/phase-reports/phase-4.6-report.md).
+
 ## Change log
 
 2026-10-30: Created the documentation baseline from recovered conversation context and the code audit. No historical design gap was silently converted into a final choice. No runtime implementation was changed.
@@ -79,3 +85,5 @@ The local `/dev/entity.html` review entry uses one shared rendering surface in d
 2026-10-31: Implemented newly scoped Phase 4.4 on reviewed `69d5fcc`, including production native-fragment startup correction. Added measured/visual evidence and stopped for review without humanoid work.
 
 2026-10-31: Implemented newly scoped Phase 4.5 on reviewed `1bb4e4b`. Resolved the provisional procedural source for local review, preserved public behavior and historical evidence, and stopped before formation animation.
+
+2026-10-31: Implemented newly scoped Phase 4.6 on reviewed `ea127e0`. Added deterministic reversible preview transitions, interruption/policy handling and motion evidence. Preserved settled anatomy, public behavior and historical reports; stopped before chapter integration.

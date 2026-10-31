@@ -6,7 +6,10 @@ import { installWorldProbe } from './world-probe.mjs';
 import { ENTITY, ENTITY_REGIONS } from '../src/world/entity/config.ts';
 
 const origin = process.argv[2] ?? 'http://127.0.0.1:5173';
-const evidence = new URL('../docs/implementation/evidence/phase-4.5/', import.meta.url);
+const evidence = new URL(
+  process.env.MISHAI_ENTITY_EVIDENCE_DIR ?? '../docs/implementation/evidence/phase-4.5/',
+  import.meta.url,
+);
 const { send, evaluate, messages, close } = await browserSession();
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function waitFor(expression) {

@@ -12,6 +12,29 @@
       import { createElement, StrictMode } from 'react';
       import { createRoot } from 'react-dom/client';
       import { EntityPreview } from '/src/dev/EntityPreview.tsx';
+      const visibility = new Set();
+      const preferences = new Set();
+      const addDocument = document.addEventListener.bind(document);
+      const removeDocument = document.removeEventListener.bind(document);
+      document.addEventListener = (type, listener, options) => {
+        if (type === 'visibilitychange') visibility.add(listener);
+        addDocument(type, listener, options);
+      };
+      document.removeEventListener = (type, listener, options) => {
+        if (type === 'visibilitychange') visibility.delete(listener);
+        removeDocument(type, listener, options);
+      };
+      const addMedia = MediaQueryList.prototype.addEventListener;
+      const removeMedia = MediaQueryList.prototype.removeEventListener;
+      MediaQueryList.prototype.addEventListener = function (type, listener, options) {
+        if (type === 'change' && this.media.includes('prefers-reduced-motion'))
+          preferences.add(listener);
+        addMedia.call(this, type, listener, options);
+      };
+      MediaQueryList.prototype.removeEventListener = function (type, listener, options) {
+        preferences.delete(listener);
+        removeMedia.call(this, type, listener, options);
+      };
       let root;
       window.entityFixture = {
         mount() {
@@ -20,6 +43,9 @@
         },
         unmount() {
           root.unmount();
+        },
+        read() {
+          return { visibility: visibility.size, preferences: preferences.size };
         },
       };
       window.entityFixture.mount();

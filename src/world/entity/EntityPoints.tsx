@@ -1,12 +1,30 @@
 import { useLayoutEffect, useMemo, useRef } from 'react';
-import { useThree } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { BufferAttribute, BufferGeometry } from 'three';
 import { ENTITY, ENTITY_REGIONS, type EntityView, type RegionSelection } from './config';
 import { sampleEntity } from './sampleEntity';
-import { entityCameraDistance } from './anatomy';
+import {
+  dispersedPositions,
+  evaluatePositions,
+  transitionCameraDistance,
+  type EntityTransition,
+} from './transition';
 
-export function EntityPoints({ view, region }: { view: EntityView; region: RegionSelection }) {
+export function EntityPoints({
+  view,
+  region,
+  transition,
+  snapshot,
+}: {
+  view: EntityView;
+  region: RegionSelection;
+  transition: EntityTransition;
+  snapshot: ReturnType<EntityTransition['getSnapshot']>;
+}) {
   const data = useMemo(() => sampleEntity(), []);
+  const dispersed = useMemo(() => dispersedPositions(data.ids.length), [data]);
+  const positions = useMemo(() => data.positions.slice(), [data]);
+  const position = useRef<BufferAttribute>(null);
   const indices = useMemo(() => data.ids.slice(), [data]);
   const geometry = useRef<BufferGeometry>(null);
   const index = useRef<BufferAttribute>(null);
@@ -14,11 +32,25 @@ export function EntityPoints({ view, region }: { view: EntityView; region: Regio
 
   useLayoutEffect(() => {
     if ('fov' in camera) camera.fov = ENTITY.fov;
-    camera.position.set(0, 0, entityCameraDistance(size.width / size.height));
+    camera.position.set(0, 0, transitionCameraDistance(size.width / size.height));
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
     invalidate();
   }, [camera, size.width, size.height, invalidate]);
+
+  useLayoutEffect(() => {
+    evaluatePositions(data.positions, dispersed, transition.getProgress(), positions);
+    if (position.current) position.current.needsUpdate = true;
+    invalidate();
+  }, [data, dispersed, positions, transition, snapshot, invalidate]);
+
+  useFrame((_, delta) => {
+    const before = transition.getProgress();
+    const progress = transition.advance(delta);
+    if (progress === before) return;
+    evaluatePositions(data.positions, dispersed, progress, positions);
+    if (position.current) position.current.needsUpdate = true;
+  });
 
   useLayoutEffect(() => {
     const selected =
@@ -38,7 +70,7 @@ export function EntityPoints({ view, region }: { view: EntityView; region: Regio
       frustumCulled={false}
     >
       <bufferGeometry ref={geometry}>
-        <bufferAttribute attach="attributes-position" args={[data.positions, 3]} />
+        <bufferAttribute ref={position} attach="attributes-position" args={[positions, 3]} />
         <bufferAttribute attach="attributes-color" args={[data.colors, 3]} />
         <bufferAttribute ref={index} attach="index" args={[indices, 1]} />
       </bufferGeometry>
