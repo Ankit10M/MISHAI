@@ -48,6 +48,14 @@ The public WorldCanvas now delegates its existing Canvas/renderer implementation
 
 Phase 4.6 adds one development-only controller for normalized entity progress, destination and playback intent. `useSyncExternalStore` supplies stable snapshots on commands, policy changes and completion; frames mutate controller progress without notifying React. EntityPoints is the sole writer of runtime positions and uses R3F's frame loop. The preview owns view/region controls and reset; neither world nor controls consume/write the Phase 4.3 experience snapshot. `observeMotionPolicy` centralizes only media/visibility listeners; ambient pause and entity endpoint/inspection semantics remain separate. See the [Phase 4.6 report](../implementation/phase-reports/phase-4.6-report.md).
 
+## Phase 4.7 independent regional ownership
+
+The same preview-local controller now owns five independent progress/target/playing states in existing region order. Form, Dissolve, Pause and Resume require an explicit region or `all`; `all` broadcasts without shared progress. Scrub takes one region, preserves its target and pauses only it. A readonly live regional view feeds the single position writer; React receives cloned snapshots only for changed commands, policies and completion. No per-frame React publication or second controller exists.
+
+Show region is draw-index filtering; Control region selects command scope. Neither selector issues a command. The all-region scrubber is disabled and its track hidden with an explanation, avoiding a fabricated combined value. Per-region DOM statuses are polite and non-live during frame advancement. Pause/Resume use `aria-disabled` with idempotent controller commands so keyboard focus survives activation and completion. One preview policy subscription cleans up on unmount. Main website visual change: none; regional mechanics remain preview-only.
+
+The next bounded task is Creator section → head formation integration, after Phase 4.7 review. It must define scroll, reverse-scroll, direct-link and reduced-motion behavior before coding and preserve the late full-humanoid reveal. No controller import has entered the public application. See the [report](../implementation/phase-reports/phase-4.7-report.md).
+
 ## Recovered architecture intent
 
 - React / semantic DOM owns readable content, navigation, controls, and accessible feedback.

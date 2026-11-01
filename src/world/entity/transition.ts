@@ -1,4 +1,4 @@
-import { ENTITY } from './config.ts';
+import { ENTITY, ENTITY_REGIONS, type EntityRegion, type RegionSelection } from './config.ts';
 
 // Provisional motion values; the reviewed anatomy and sampler remain unchanged.
 export const TRANSITION = {
@@ -48,17 +48,36 @@ export function transitionCameraDistance(aspect: number) {
   );
 }
 
+export type RegionState = Readonly<{ progress: number; target: 0 | 1; playing: boolean }>;
+
+export function evaluateRegionalPositions(
+  settled: Float32Array,
+  dispersed: Float32Array,
+  membership: Uint8Array,
+  regions: readonly RegionState[],
+  output: Float32Array,
+) {
+  for (let particle = 0; particle < membership.length; particle++) {
+    const p = regions[membership[particle]].progress;
+    const eased = p * p * (3 - 2 * p);
+    for (let i = particle * 3; i < particle * 3 + 3; i++) {
+      output[i] =
+        p === 0
+          ? dispersed[i]
+          : p === 1
+            ? settled[i]
+            : dispersed[i] + (settled[i] - dispersed[i]) * eased;
+    }
+  }
+}
+
 export function createEntityTransition(reducedMotion = false, visible = true) {
-  let progress = 1;
-  let target: 0 | 1 = 1;
-  let playing = false;
-  let skipFrame = true;
+  const regions = ENTITY_REGIONS.map(() => ({ progress: 1, target: 1 as 0 | 1, playing: false }));
+  const skipFrame = ENTITY_REGIONS.map(() => true);
   const listeners = new Set<() => void>();
-  const advancing = () => playing && visible && !reducedMotion;
+  const advancing = () => visible && !reducedMotion && regions.some((region) => region.playing);
   const read = () => ({
-    progress,
-    target,
-    playing,
+    regions: regions.map((region) => ({ ...region })),
     reducedMotion,
     visible,
     advancing: advancing(),
@@ -68,14 +87,28 @@ export function createEntityTransition(reducedMotion = false, visible = true) {
     snapshot = read();
     for (const listener of listeners) listener();
   }
-  function destination(next: 0 | 1) {
-    if (playing && target === next) return;
-    const wasAdvancing = advancing();
-    target = next;
-    if (reducedMotion) progress = target;
-    playing = progress !== target;
-    if (!wasAdvancing && advancing()) skipFrame = true;
-    publish();
+  function command(
+    selection: RegionSelection,
+    update: (region: (typeof regions)[number], index: number) => void,
+  ) {
+    let changed = false;
+    regions.forEach((region, index) => {
+      if (selection !== 'all' && ENTITY_REGIONS[index].id !== selection) return;
+      const { progress, target, playing } = region;
+      update(region, index);
+      if (!playing && region.playing) skipFrame[index] = true;
+      changed ||=
+        progress !== region.progress || target !== region.target || playing !== region.playing;
+    });
+    if (changed) publish();
+  }
+  function destination(selection: RegionSelection, next: 0 | 1) {
+    command(selection, (region) => {
+      if (region.playing && region.target === next) return;
+      region.target = next;
+      if (reducedMotion) region.progress = next;
+      region.playing = region.progress !== next;
+    });
   }
   return {
     subscribe(listener: () => void) {
@@ -85,54 +118,72 @@ export function createEntityTransition(reducedMotion = false, visible = true) {
       };
     },
     getSnapshot: () => snapshot,
-    getProgress: () => progress,
-    form: () => destination(1),
-    dissolve: () => destination(0),
-    togglePause() {
-      if (reducedMotion || progress === target) return;
-      playing = !playing;
-      skipFrame = true;
-      publish();
+    getRegions: (): readonly RegionState[] => regions,
+    getProgress: (region: EntityRegion) =>
+      regions[ENTITY_REGIONS.findIndex((entry) => entry.id === region)].progress,
+    form: (selection: RegionSelection) => destination(selection, 1),
+    dissolve: (selection: RegionSelection) => destination(selection, 0),
+    pause(selection: RegionSelection) {
+      command(selection, (region) => {
+        region.playing = false;
+      });
     },
-    scrub(value: number) {
+    resume(selection: RegionSelection) {
+      if (reducedMotion) return;
+      command(selection, (region) => {
+        region.playing = region.progress !== region.target;
+      });
+    },
+    scrub(selection: EntityRegion, value: number) {
       if (!Number.isFinite(value)) return;
-      progress = Math.max(0, Math.min(1, value));
-      playing = false;
-      skipFrame = true;
-      publish();
+      command(selection, (region) => {
+        region.progress = Math.max(0, Math.min(1, value));
+        region.playing = false;
+      });
     },
     reset() {
-      progress = target = 1;
-      playing = false;
-      skipFrame = true;
-      publish();
+      command('all', (region) => {
+        region.progress = region.target = 1;
+        region.playing = false;
+      });
     },
     setPolicy(reduced: boolean, isVisible: boolean) {
       if (reducedMotion === reduced && visible === isVisible) return;
-      const wasAdvancing = advancing();
       reducedMotion = reduced;
       visible = isVisible;
-      if (reducedMotion && playing) {
-        progress = target;
-        playing = false;
-      }
-      if (!wasAdvancing && advancing()) skipFrame = true;
+      regions.forEach((region, index) => {
+        if (reducedMotion && region.playing) {
+          region.progress = region.target;
+          region.playing = false;
+        }
+        skipFrame[index] = true;
+      });
       publish();
     },
     advance(delta: number) {
-      if (!advancing()) return progress;
-      if (skipFrame) {
-        skipFrame = false;
-        return progress;
-      }
-      if (!Number.isFinite(delta) || delta <= 0) return progress;
+      if (!advancing()) return false;
+      if (!Number.isFinite(delta) || delta <= 0) return false;
       const step = Math.min(delta, TRANSITION.maxDelta) / TRANSITION.duration;
-      progress = target === 1 ? Math.min(1, progress + step) : Math.max(0, progress - step);
-      if (progress === target) {
-        playing = false;
-        publish();
-      }
-      return progress;
+      let changed = false;
+      let completed = false;
+      regions.forEach((region, index) => {
+        if (!region.playing) return;
+        if (skipFrame[index]) {
+          skipFrame[index] = false;
+          return;
+        }
+        region.progress =
+          region.target === 1
+            ? Math.min(1, region.progress + step)
+            : Math.max(0, region.progress - step);
+        changed = true;
+        if (region.progress === region.target) {
+          region.playing = false;
+          completed = true;
+        }
+      });
+      if (completed) publish();
+      return changed;
     },
   };
 }

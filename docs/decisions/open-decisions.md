@@ -16,7 +16,7 @@ Status: explicit unknowns. Resolve items when the next scoped task depends on th
 | D10 | Entity asset pipeline            | Phase 4.5 supplies an original smooth procedural proxy and deterministic sampling boundary for development review         | Approve final proportions/gaps and any replacement mesh with usage rights before later integration  |
 | D11 | Quality budgets                  | Phase 4.4: conservative fixed 280-point field and modest headless renderer measurements                                   | Physical-device budgets, thresholds and adaptation remain open; no achieved 60-FPS claim            |
 | D12 | Accessibility / failure policy   | Native navigation, world initialization fallback and live motion preference plus user pause implemented                   | Screen-reader/real-device coverage, broader motion and context-loss recovery remain open            |
-| D13 | Later implementation numbering   | Phases 4.2–4.6 authorized through new tasks, separate from historical planning                                            | Review Phase 4.6 reversible mechanics before chapter integration; no later phase started            |
+| D13 | Later implementation numbering   | Phases 4.2–4.7 authorized through new tasks, separate from historical planning                                            | Review Phase 4.7 regional mechanics; next bounded task is Creator/head integration, not started     |
 | D14 | Backend and publishing           | No selected infrastructure                                                                                                | Decide only when a concrete product requirement needs it                                            |
 
 ## Known defects are not open design decisions
@@ -72,7 +72,15 @@ Date: 2026-10-31. The user accepted Phase 4.5 at `ea127e0` as a working procedur
 
 One controller owns progress and destination; opposite commands reverse from the current value, repeated active commands do nothing, scrubbing pauses, and reset restores settled/front/all. Reduced motion settles active requests immediately while preserving paused inspection. Hidden tabs suspend active intent and never replay elapsed time. React receives meaningful state changes only; the slider is explicitly an inspection control, not a live progress percentage. Fixed union framing replaces settled-only preview framing. These choices validate mechanics, not final motion approval or chapter integration. See the [Phase 4.6 report](../implementation/phase-reports/phase-4.6-report.md).
 
+## New Phase 4.7 implementation choices — provisional
+
+Date: 2026-11-01. Phase 4.6 was reviewed at `38793ac`. Keep anatomy, missing patches, seeds, membership, paths, five-second duration, 50ms cap and union framing. Extend its one controller with five region states; broadcasts retain each current pose. There is no global progress, average, automatic sequence or orchestration framework. Separate Show region filtering from Control region commands. A single-region scrub pauses only its region and retains its endpoint; all-region inspection is disabled. Enabling reduced motion settles only playing regions to individual targets. Visibility preserves active intent without hidden elapsed time.
+
+The existing seeded cloud remains visible around formed regions. It competes visually with the head and arms, especially at small display sizes; density, colors and visibility were not changed to improve captures. This remains an integration/art-direction limitation, not an additional speculative prototype phase. The next concrete task is Creator section → head formation integration with scroll, reverse-scroll, direct-link and reduced-motion rules defined before coding and the full humanoid reserved for the late reveal. [Phase 4.7 report](../implementation/phase-reports/phase-4.7-report.md).
+
 ## Change log
+
+2026-11-01: Implemented Phase 4.7 independent regions in the isolated preview. Main website visual change: none; regional mechanics remain preview-only. Stopped for review; no later phase, commit, push or deployment.
 
 2026-10-30: Created the documentation baseline from recovered conversation context and the code audit. No historical design gap was silently converted into a final choice. No runtime implementation was changed.
 

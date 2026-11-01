@@ -5,7 +5,7 @@ import { ENTITY, ENTITY_REGIONS, type EntityView, type RegionSelection } from '.
 import { sampleEntity } from './sampleEntity';
 import {
   dispersedPositions,
-  evaluatePositions,
+  evaluateRegionalPositions,
   transitionCameraDistance,
   type EntityTransition,
 } from './transition';
@@ -39,16 +39,26 @@ export function EntityPoints({
   }, [camera, size.width, size.height, invalidate]);
 
   useLayoutEffect(() => {
-    evaluatePositions(data.positions, dispersed, transition.getProgress(), positions);
+    evaluateRegionalPositions(
+      data.positions,
+      dispersed,
+      data.regions,
+      transition.getRegions(),
+      positions,
+    );
     if (position.current) position.current.needsUpdate = true;
     invalidate();
   }, [data, dispersed, positions, transition, snapshot, invalidate]);
 
   useFrame((_, delta) => {
-    const before = transition.getProgress();
-    const progress = transition.advance(delta);
-    if (progress === before) return;
-    evaluatePositions(data.positions, dispersed, progress, positions);
+    if (!transition.advance(delta)) return;
+    evaluateRegionalPositions(
+      data.positions,
+      dispersed,
+      data.regions,
+      transition.getRegions(),
+      positions,
+    );
     if (position.current) position.current.needsUpdate = true;
   });
 

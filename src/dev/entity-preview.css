@@ -60,9 +60,24 @@
   accent-color: var(--accent);
 }
 
-.entity-toolbar button:disabled {
+.entity-toolbar button[aria-disabled='true'] {
   opacity: 0.55;
   cursor: default;
+}
+
+.entity-statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.entity-toolbar input:disabled {
+  visibility: hidden;
 }
 
 .entity-stage {
