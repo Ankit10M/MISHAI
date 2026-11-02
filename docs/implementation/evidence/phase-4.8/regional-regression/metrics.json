@@ -1,0 +1,1018 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.74",
+    "revision": "@d331de35ca8ab1358c7a17e4bd41627d55eaef51",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.25"
+  },
+  "samples": [
+    {
+      "scenario": "initial settled",
+      "frames": 3,
+      "maxStep": 0,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.150106980363545,
+        "minY": -0.6024536700753049,
+        "maxX": 0.15080663293390786,
+        "maxY": 0.5844026991235144
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "head formed, other regions dispersed",
+      "frames": 16,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.29951857835592977,
+        "minY": -0.7301819876173117,
+        "maxX": 0.30310097388514057,
+        "maxY": 0.7319325586671931
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "head and arms formed, other regions dispersed",
+      "frames": 25,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.29951857835592977,
+        "minY": -0.7301819876173117,
+        "maxX": 0.30310097388514057,
+        "maxY": 0.7319325586671931
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "mixed front",
+      "frames": 32,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0.45, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0.25, "target": 0, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 0.45, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0.25, "target": 0, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.25383722779122564,
+        "minY": -0.6736639441632066,
+        "maxX": 0.2743776796250321,
+        "maxY": 0.6640137206096055
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "arms visible, head controlled",
+      "frames": 34,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 609,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0.45, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0.25, "target": 0, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 0.45, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0.25, "target": 0, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.25383722779122564,
+        "minY": -0.6736639441632066,
+        "maxX": 0.2743776796250321,
+        "maxY": 0.6640137206096055
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "narrow mixed, all regions visible",
+      "frames": 42,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [390, 844],
+      "buffer": [390, 320],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0.45, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0.25, "target": 0, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 0.45, "target": 0, "playing": false },
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0.25, "target": 0, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.43301706927360806,
+        "minY": -0.6736639441632066,
+        "maxX": 0.4680567138995176,
+        "maxY": 0.6640137206096055
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.21875,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "dispersed",
+      "frames": 82,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0,
+      "regions": [
+        { "progress": 0, "target": 1, "playing": false },
+        { "progress": 0, "target": 1, "playing": false },
+        { "progress": 0, "target": 1, "playing": false },
+        { "progress": 0, "target": 1, "playing": false },
+        { "progress": 0, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0, "target": 1, "playing": false },
+          { "progress": 0, "target": 1, "playing": false },
+          { "progress": 0, "target": 1, "playing": false },
+          { "progress": 0, "target": 1, "playing": false },
+          { "progress": 0, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.300191638598243,
+        "minY": -0.7301819876173117,
+        "maxX": 0.30310097388514057,
+        "maxY": 0.7319325586671931
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "intermediate front",
+      "frames": 96,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.5,
+      "regions": [
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.20768163114421798,
+        "minY": -0.618078904507903,
+        "maxX": 0.19234276642468892,
+        "maxY": 0.5975975027843917
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "narrow intermediate three-quarter",
+      "frames": 98,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [390, 844],
+      "buffer": [375, 320],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.5,
+      "regions": [
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.3609225132322062,
+        "minY": -0.6438923668558144,
+        "maxX": 0.3143314324540409,
+        "maxY": 0.5759083481067666
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.171875,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "intermediate arms",
+      "frames": 103,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 609,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [390, 844],
+      "buffer": [375, 320],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.5,
+      "regions": [
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false },
+        { "progress": 0.5, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false },
+          { "progress": 0.5, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.3609225132322062,
+        "minY": -0.6438923668558144,
+        "maxX": 0.3143314324540409,
+        "maxY": 0.5759083481067666
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.171875,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "paused after reversal",
+      "frames": 162,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.38658000000715254,
+      "regions": [
+        { "progress": 0.38658000000715254, "target": 0, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.38658000000715254, "target": 0, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.19272992474901568,
+        "minY": -0.6024536700753049,
+        "maxX": 0.19328237580879337,
+        "maxY": 0.6190627334019034
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "paused resize and view",
+      "frames": 165,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [390, 844],
+      "buffer": [375, 320],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.38658000000715254,
+      "regions": [
+        { "progress": 0.38658000000715254, "target": 0, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.38658000000715254, "target": 0, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.36126129840032545,
+        "minY": -0.6188745398987089,
+        "maxX": 0.34198517371973547,
+        "maxY": 0.5914171582419823
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.171875,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "after hidden-tab resume",
+      "frames": 206,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.5061,
+      "regions": [
+        { "progress": 0.5061, "target": 1, "playing": false },
+        { "progress": 0.37, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.5061, "target": 1, "playing": false },
+          { "progress": 0.37, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.24187123216308604,
+        "minY": -0.6188745398987089,
+        "maxX": 0.2179494135537823,
+        "maxY": 0.6089671428447846
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "playing resize and head isolation",
+      "frames": 217,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 284,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [800, 900],
+      "buffer": [800, 495],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0.4994799999952316,
+      "regions": [
+        { "progress": 0.4994799999952316, "target": 1, "playing": true },
+        { "progress": 0.37, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0.45, "target": 1, "playing": true },
+          { "progress": 0.37, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": true
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.3011699701759902,
+        "minY": -0.6024536700753049,
+        "maxX": 0.2963130798396317,
+        "maxY": 0.5976953712022527
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.6160595921974623,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "completed formation",
+      "frames": 294,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 284,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [800, 900],
+      "buffer": [800, 495],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0.37, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 0.37, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.3011699701759902,
+        "minY": -0.6024536700753049,
+        "maxX": 0.2963130798396317,
+        "maxY": 0.5844026991235144
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.6160595921974623,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "completed dissolution",
+      "frames": 447,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 284,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [800, 900],
+      "buffer": [800, 495],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 0,
+      "regions": [
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0.37, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 0, "target": 0, "playing": false },
+          { "progress": 0.37, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.3861940238523092,
+        "minY": -0.6750302083498497,
+        "maxX": 0.37745407400952014,
+        "maxY": 0.6649284664464651
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 1.6160595921974623,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "final concurrent region completed",
+      "frames": 496,
+      "maxStep": 4.360137462615967,
+      "count": 2600,
+      "geometry": "8846d9e3-8c66-4498-93ba-98f953048f05",
+      "material": "99152ebe-9d00-400b-b992-9978dd2f2940",
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 1, "textures": 0 },
+      "programs": 1,
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "aspect": 1,
+      "hidden": false,
+      "disposed": { "geometry": 0, "material": 0 },
+      "contextLost": false,
+      "progress": 1,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false }
+      ],
+      "snapshot": {
+        "regions": [
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false },
+          { "progress": 1, "target": 1, "playing": false }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "error": 0,
+      "bounds": {
+        "minX": -0.150106980363545,
+        "minY": -0.6024536700753049,
+        "maxX": 0.15080663293390786,
+        "maxY": 0.5844026991235144
+      },
+      "scale": [1, 1, 1],
+      "cameraAspect": 2.079047103410937,
+      "stableAttributes": true,
+      "sourceColorsMatch": true
+    },
+    {
+      "scenario": "active teardown 0",
+      "frames": 6,
+      "maxStep": 0.002886056900024414,
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 0, "textures": 0 },
+      "programs": 0,
+      "renderer": null,
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "hidden": false,
+      "disposed": { "geometry": 1, "material": 1 },
+      "contextLost": true
+    },
+    {
+      "scenario": "active teardown 1",
+      "frames": 9,
+      "maxStep": 0.006070613861083984,
+      "calls": 1,
+      "points": 2600,
+      "memory": { "geometries": 0, "textures": 0 },
+      "programs": 0,
+      "renderer": null,
+      "dpr": 1,
+      "viewport": [1440, 1000],
+      "buffer": [1440, 692],
+      "camera": [0, 0, 7.7895295280594015],
+      "hidden": false,
+      "disposed": { "geometry": 1, "material": 1 },
+      "contextLost": true
+    }
+  ],
+  "reversalMaxProgressStep": 0.006839999997615809,
+  "nativeTabVisibility": true,
+  "resumeMaxProgressStep": 0.00673999999761582,
+  "recording": [
+    {
+      "region": "head",
+      "action": "Form",
+      "ms": 27.200000017881393,
+      "regions": [
+        { "progress": 0, "target": 1, "playing": true },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ]
+    },
+    {
+      "region": "arms",
+      "action": "Form",
+      "ms": 829.6000000238419,
+      "regions": [
+        { "progress": 0.1549800000011921, "target": 1, "playing": true },
+        { "progress": 0, "target": 1, "playing": true },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ]
+    },
+    {
+      "region": "head",
+      "action": "Dissolve",
+      "ms": 2234.7000000178814,
+      "regions": [
+        { "progress": 0.4348800000011921, "target": 0, "playing": true },
+        { "progress": 0.27323999999761583, "target": 1, "playing": true },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ]
+    },
+    {
+      "region": "arms",
+      "action": "Pause",
+      "ms": 2826.4000000059605,
+      "regions": [
+        { "progress": 0.3149199999988079, "target": 0, "playing": true },
+        { "progress": 0.39320000000000005, "target": 1, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ]
+    },
+    {
+      "region": "head",
+      "action": "Form",
+      "ms": 3628.5,
+      "regions": [
+        { "progress": 0.15476000000238418, "target": 1, "playing": true },
+        { "progress": 0.39320000000000005, "target": 1, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ]
+    },
+    {
+      "region": "arms",
+      "action": "Resume",
+      "ms": 6025.700000017881,
+      "regions": [
+        { "progress": 0.6345600000023843, "target": 1, "playing": true },
+        { "progress": 0.39320000000000005, "target": 1, "playing": true },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false },
+        { "progress": 0, "target": 0, "playing": false }
+      ]
+    },
+    {
+      "region": "all",
+      "action": "Form",
+      "ms": 9539,
+      "regions": [
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 1, "target": 1, "playing": false },
+        { "progress": 0, "target": 1, "playing": true },
+        { "progress": 0, "target": 1, "playing": true },
+        { "progress": 0, "target": 1, "playing": true }
+      ]
+    }
+  ]
+}

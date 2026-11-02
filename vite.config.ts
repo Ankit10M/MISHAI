@@ -12,8 +12,12 @@ export default defineConfig({
       apply: 'build',
       generateBundle() {
         for (const id of this.getModuleIds()) {
-          if (/\/src\/(world\/entity|dev)\//.test(id.replaceAll('\\', '/'))) {
-            this.error('Development entity modules entered the production bundle');
+          if (
+            /\/(src\/dev\/|scripts\/|src\/world\/entity\/EntityPoints\.)/.test(
+              id.replaceAll('\\', '/'),
+            )
+          ) {
+            this.error('Development preview or test modules entered the production bundle');
           }
         }
       },

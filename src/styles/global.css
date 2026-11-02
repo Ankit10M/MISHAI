@@ -48,6 +48,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
+  clip-path: var(--creator-window, none);
   background: linear-gradient(
     90deg,
     transparent,
@@ -237,6 +238,18 @@ h2 span {
   margin-top: 1rem;
 }
 
+.creator-composition {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.creator-visual {
+  height: 24rem;
+  min-width: 0;
+}
+
 h3,
 .section-lead {
   font-size: clamp(1.25rem, 3vw, 1.75rem);
@@ -287,6 +300,14 @@ h3,
 }
 
 @media (max-width: 45rem) {
+  .creator-composition {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .creator-visual {
+    height: 20rem;
+  }
   .content-section {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;

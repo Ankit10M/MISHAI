@@ -7,7 +7,10 @@ import { ENTITY } from '../src/world/entity/config.ts';
 import { TRANSITION } from '../src/world/entity/transition.ts';
 
 const origin = process.argv[2] ?? 'http://127.0.0.1:5173';
-const evidence = new URL('../docs/implementation/evidence/phase-4.7/', import.meta.url);
+const evidence = new URL(
+  process.env.MISHAI_TRANSITION_EVIDENCE_DIR ?? '../docs/implementation/evidence/phase-4.7/',
+  import.meta.url,
+);
 const { send, evaluate, messages, close } = await browserSession();
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function waitFor(expression) {

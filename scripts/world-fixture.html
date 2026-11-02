@@ -38,6 +38,32 @@
         removeMedia.call(this, type, listener, options);
       };
       let root;
+      const layoutListeners = new Map();
+      const addWindow = window.addEventListener.bind(window);
+      const removeWindow = window.removeEventListener.bind(window);
+      window.addEventListener = (type, listener, options) => {
+        if (['scroll', 'resize', 'pageshow', 'hashchange'].includes(type)) {
+          if (!layoutListeners.has(type)) layoutListeners.set(type, new Set());
+          layoutListeners.get(type).add(listener);
+        }
+        addWindow(type, listener, options);
+      };
+      window.removeEventListener = (type, listener, options) => {
+        layoutListeners.get(type)?.delete(listener);
+        removeWindow(type, listener, options);
+      };
+      const activeObservers = new Set();
+      const NativeResizeObserver = window.ResizeObserver;
+      window.ResizeObserver = class extends NativeResizeObserver {
+        observe(...args) {
+          activeObservers.add(this);
+          super.observe(...args);
+        }
+        disconnect() {
+          activeObservers.delete(this);
+          super.disconnect();
+        }
+      };
       window.worldFixture = {
         mount() {
           root = createRoot(document.getElementById('root'));
@@ -48,6 +74,14 @@
         },
         read() {
           return { visibility: visibility.size, preferences: preferences.size };
+        },
+        readLayout() {
+          return {
+            observers: activeObservers.size,
+            listeners: Object.fromEntries(
+              [...layoutListeners].map(([type, entries]) => [type, entries.size]),
+            ),
+          };
         },
       };
       window.worldFixture.mount();

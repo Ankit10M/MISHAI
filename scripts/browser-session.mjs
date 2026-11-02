@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 
-export async function browserSession() {
+export async function browserSession(onEvent = () => {}) {
   const page = await (
     await fetch('http://127.0.0.1:9222/json/new?about:blank', { method: 'PUT' })
   ).json();
@@ -16,7 +16,10 @@ export async function browserSession() {
       pending.delete(message.id);
       if (message.error) request.reject(new Error(JSON.stringify(message.error)));
       else request.resolve(message.result);
-    } else messages.push(message);
+    } else {
+      messages.push(message);
+      onEvent(message);
+    }
   });
   function send(method, params = {}) {
     return new Promise((resolve, reject) => {
@@ -39,7 +42,11 @@ export async function browserSession() {
     evaluate,
     messages,
     async close() {
-      await send('Page.close');
+      if (socket.readyState === WebSocket.CLOSED) return;
+      const closed = new Promise((resolve) =>
+        socket.addEventListener('close', resolve, { once: true }),
+      );
+      await Promise.race([send('Page.close'), closed]);
       socket.close();
     },
   };

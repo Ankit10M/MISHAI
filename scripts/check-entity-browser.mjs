@@ -195,9 +195,9 @@ try {
     !messages.some(
       (m) =>
         m.method === 'Network.requestWillBeSent' &&
-        /\/src\/(world\/entity|dev)\//.test(m.params.request.url),
+        /\/src\/dev\/|\/scripts\/|\/world\/entity\/EntityPoints\./.test(m.params.request.url),
     ),
-    'normal app never requests entity modules',
+    'normal app never requests preview or fixture modules',
   );
   await writeFile(
     new URL('metrics.json', evidence),

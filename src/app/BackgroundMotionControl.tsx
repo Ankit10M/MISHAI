@@ -9,20 +9,15 @@ export function BackgroundMotionControl({
 }) {
   return (
     <div className="background-motion-control">
-      <button
-        type="button"
-        disabled={reducedMotion}
-        onClick={onToggle}
-        aria-describedby="background-motion-status"
-      >
-        {reducedMotion
-          ? 'Background motion off'
-          : paused
-            ? 'Resume background motion'
-            : 'Pause background motion'}
+      <button type="button" onClick={onToggle} aria-describedby="background-motion-status">
+        {paused ? 'Resume visual motion' : 'Pause visual motion'}
       </button>
       <span id="background-motion-status">
-        {reducedMotion ? 'Off: reduced motion' : paused ? 'Paused' : 'Enabled'}
+        {paused
+          ? 'Paused: background and Creator head'
+          : reducedMotion
+            ? 'Reduced motion: background off; Creator head changes immediately'
+            : 'Enabled: background and Creator head'}
       </span>
     </div>
   );

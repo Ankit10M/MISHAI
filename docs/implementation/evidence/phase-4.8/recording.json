@@ -1,0 +1,282 @@
+{
+  "origin": "http://127.0.0.1:5173",
+  "viewport": [1440, 1000],
+  "zoom": 1,
+  "frameCount": 262,
+  "durationMs": 18000,
+  "timeline": [
+    {
+      "ms": 1071.5597,
+      "action": "Enter Creator",
+      "progress": 0,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "hash": "#creator",
+      "observed": null
+    },
+    {
+      "ms": 7374.5463,
+      "action": "Leave for Projects",
+      "progress": 1,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 1,
+            "target": 1,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "hash": "#projects",
+      "observed": "#creator"
+    },
+    {
+      "ms": 8607.5547,
+      "action": "Reverse into Creator",
+      "progress": 0.7782600000023844,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 1,
+            "target": 0,
+            "playing": true
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": true
+      },
+      "hash": "#creator",
+      "observed": "#projects"
+    },
+    {
+      "ms": 9361.888500000001,
+      "action": "Pause visual motion",
+      "progress": 0.8879199999988079,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 0.8879199999988079,
+            "target": 1,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "hash": "#creator",
+      "observed": "#creator"
+    },
+    {
+      "ms": 10929.1458,
+      "action": "Navigate to Projects while paused",
+      "progress": 0.8879199999988079,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 0.8879199999988079,
+            "target": 1,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "hash": "#projects",
+      "observed": "#creator"
+    },
+    {
+      "ms": 12700.7842,
+      "action": "Return to Creator while paused",
+      "progress": 0.8879199999988079,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 0.8879199999988079,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": false
+      },
+      "hash": "#creator",
+      "observed": "#projects"
+    },
+    {
+      "ms": 14602.5138,
+      "action": "Resume visual motion",
+      "progress": 0.8927799999952316,
+      "snapshot": {
+        "regions": [
+          {
+            "progress": 0.8879199999988079,
+            "target": 1,
+            "playing": true
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          },
+          {
+            "progress": 0,
+            "target": 0,
+            "playing": false
+          }
+        ],
+        "reducedMotion": false,
+        "visible": true,
+        "advancing": true
+      },
+      "hash": "#creator",
+      "observed": "#creator"
+    }
+  ]
+}

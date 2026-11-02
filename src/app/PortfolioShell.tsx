@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import { portfolio } from '../content/portfolio';
 import { isSectionActivation, type ExperienceSnapshot } from './experience';
 import { sections, type SectionId } from './sections';
@@ -60,10 +60,12 @@ export function PortfolioShell({
   snapshot,
   onNavigate,
   backgroundControl,
+  creatorArea,
 }: {
   snapshot: ExperienceSnapshot;
   onNavigate: (section: SectionId) => void;
   backgroundControl?: ReactNode;
+  creatorArea?: RefObject<HTMLDivElement | null>;
 }) {
   return (
     <div className="portfolio-shell">
@@ -115,7 +117,14 @@ export function PortfolioShell({
               <span aria-hidden="true">{String(index + 1).padStart(2, '0')} / </span>
               {label}
             </h2>
-            {sectionBodies[id]}
+            {id === 'creator' ? (
+              <div className="creator-composition">
+                {sectionBodies[id]}
+                <div className="creator-visual" ref={creatorArea} aria-hidden="true" />
+              </div>
+            ) : (
+              sectionBodies[id]
+            )}
           </section>
         ))}
       </main>

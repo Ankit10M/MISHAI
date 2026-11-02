@@ -20,6 +20,7 @@ export function useBackgroundMotion() {
   return {
     paused,
     reducedMotion,
+    visible,
     motionEnabled: !paused && !reducedMotion && visible,
     togglePaused: () => setPaused((value) => !value),
   };

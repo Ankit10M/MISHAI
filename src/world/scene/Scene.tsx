@@ -1,6 +1,16 @@
 ﻿import { ParticleField } from '../particles/ParticleField';
 
-// Scene stays a composition root; particle lifetime and frame work belong to the field.
-export function Scene({ motionEnabled }: { motionEnabled: boolean }) {
-  return <ParticleField motionEnabled={motionEnabled} />;
+import { CreatorHead, type CreatorHeadProps } from '../entity/CreatorHead';
+
+// Scene stays a composition root; each particle component owns its resources and frame work.
+export function Scene({
+  motionEnabled,
+  ...headProps
+}: { motionEnabled: boolean } & CreatorHeadProps) {
+  return (
+    <>
+      <ParticleField motionEnabled={motionEnabled} />
+      <CreatorHead {...headProps} />
+    </>
+  );
 }

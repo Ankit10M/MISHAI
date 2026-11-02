@@ -71,8 +71,16 @@ export function evaluateRegionalPositions(
   }
 }
 
-export function createEntityTransition(reducedMotion = false, visible = true) {
-  const regions = ENTITY_REGIONS.map(() => ({ progress: 1, target: 1 as 0 | 1, playing: false }));
+export function createEntityTransition(
+  reducedMotion = false,
+  visible = true,
+  initialProgress: 0 | 1 = 1,
+) {
+  const regions = ENTITY_REGIONS.map(() => ({
+    progress: initialProgress as number,
+    target: initialProgress,
+    playing: false,
+  }));
   const skipFrame = ENTITY_REGIONS.map(() => true);
   const listeners = new Set<() => void>();
   const advancing = () => visible && !reducedMotion && regions.some((region) => region.playing);
@@ -102,12 +110,12 @@ export function createEntityTransition(reducedMotion = false, visible = true) {
     });
     if (changed) publish();
   }
-  function destination(selection: RegionSelection, next: 0 | 1) {
+  function destination(selection: RegionSelection, next: 0 | 1, paused = false) {
     command(selection, (region) => {
-      if (region.playing && region.target === next) return;
+      if (!paused && region.playing && region.target === next) return;
       region.target = next;
-      if (reducedMotion) region.progress = next;
-      region.playing = region.progress !== next;
+      if (reducedMotion && !paused) region.progress = next;
+      region.playing = !paused && region.progress !== next;
     });
   }
   return {
@@ -118,6 +126,7 @@ export function createEntityTransition(reducedMotion = false, visible = true) {
       };
     },
     getSnapshot: () => snapshot,
+    setTarget: destination,
     getRegions: (): readonly RegionState[] => regions,
     getProgress: (region: EntityRegion) =>
       regions[ENTITY_REGIONS.findIndex((entry) => entry.id === region)].progress,

@@ -16,7 +16,7 @@ Status: explicit unknowns. Resolve items when the next scoped task depends on th
 | D10 | Entity asset pipeline            | Phase 4.5 supplies an original smooth procedural proxy and deterministic sampling boundary for development review         | Approve final proportions/gaps and any replacement mesh with usage rights before later integration  |
 | D11 | Quality budgets                  | Phase 4.4: conservative fixed 280-point field and modest headless renderer measurements                                   | Physical-device budgets, thresholds and adaptation remain open; no achieved 60-FPS claim            |
 | D12 | Accessibility / failure policy   | Native navigation, world initialization fallback and live motion preference plus user pause implemented                   | Screen-reader/real-device coverage, broader motion and context-loss recovery remain open            |
-| D13 | Later implementation numbering   | Phases 4.2–4.7 authorized through new tasks, separate from historical planning                                            | Review Phase 4.7 regional mechanics; next bounded task is Creator/head integration, not started     |
+| D13 | Later implementation numbering   | Phases 4.2–4.8 authorized through new tasks, separate from historical planning                                            | Review Phase 4.8 Creator/head integration; other-region integration and later phases not started    |
 | D14 | Backend and publishing           | No selected infrastructure                                                                                                | Decide only when a concrete product requirement needs it                                            |
 
 ## Known defects are not open design decisions
@@ -78,6 +78,14 @@ Date: 2026-11-01. Phase 4.6 was reviewed at `38793ac`. Keep anatomy, missing pat
 
 The existing seeded cloud remains visible around formed regions. It competes visually with the head and arms, especially at small display sizes; density, colors and visibility were not changed to improve captures. This remains an integration/art-direction limitation, not an additional speculative prototype phase. The next concrete task is Creator section → head formation integration with scroll, reverse-scroll, direct-link and reduced-motion rules defined before coding and the full humanoid reserved for the late reveal. [Phase 4.7 report](../implementation/phase-reports/phase-4.7-report.md).
 
+## New Phase 4.8 implementation choices - provisional
+
+Completed 2026-11-02 on reviewed `14fcca7`, resuming the interrupted 2026-11-01 work. Observed Creator activity targets head formation; any other/null observation targets dispersion. Historical lastNavigation is not a command. Start dispersed. Explicit user pause retains the latest target without movement and outranks reduced-motion endpoint selection. Resume under reduced motion synchronizes immediately, while ambient motion remains off. True visibility suspends advancement independently.
+
+Only the existing 284 head/neck particles render publicly. Copy stable IDs/colors/settled coordinates; derive a local deterministic cloud centered at `[0,1.73,0]`, half-bounds `[0.55,0.55,0.28]`. Public fit factor 0.82 and point size 0.035 improve legibility; opacity 0.7 and palette remain unchanged. A reserved Creator rectangle controls uniform placement, scissor clipping and a local exclusion from the text scrim. The public camera and ambient particle transform remain unchanged. No second Canvas, new facial detail, shader, dependency or cumulative assembly policy is added.
+
+The build now permits shared entity runtime while rejecting preview controls/full-body renderer and fixtures. The visible Creator change is integrated; full humanoid and other regions remain preview-only, and intro/final reveal remain unimplemented. Desktop/narrow captures and composited-page video support visual inspection; real-device, screen-reader and real-time human comfort validation remain open. [Phase 4.8 report](../implementation/phase-reports/phase-4.8-report.md).
+
 ## Change log
 
 2026-11-01: Implemented Phase 4.7 independent regions in the isolated preview. Main website visual change: none; regional mechanics remain preview-only. Stopped for review; no later phase, commit, push or deployment.
@@ -95,3 +103,5 @@ The existing seeded cloud remains visible around formed regions. It competes vis
 2026-10-31: Implemented newly scoped Phase 4.5 on reviewed `1bb4e4b`. Resolved the provisional procedural source for local review, preserved public behavior and historical evidence, and stopped before formation animation.
 
 2026-10-31: Implemented newly scoped Phase 4.6 on reviewed `ea127e0`. Added deterministic reversible preview transitions, interruption/policy handling and motion evidence. Preserved settled anatomy, public behavior and historical reports; stopped before chapter integration.
+
+2026-11-02: Completed the bounded public Creator/head integration in Phase 4.8. Preserved historical evidence and complete development preview; stopped for review without a commit, push or deployment.

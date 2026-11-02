@@ -1,6 +1,6 @@
 # Phase roadmap and status
 
-Status as of 2026-11-01. Planning completion and software completion are separate.
+Status as of 2026-11-02. Planning completion and software completion are separate.
 
 ## Recovered planning sequence
 
@@ -36,23 +36,21 @@ The latest recovered conversation reached the Phase 4.1 IDE-agent instruction. T
 
 ## Actual implementation inventory
 
-Newly authorized implementation, separate from recovered historical planning: Phase 4.6 was reviewed at `38793ac`. **Phase 4.7 - Independent Region Assembly** is complete locally and ready for review. Its [report](phase-reports/phase-4.7-report.md) records five independent region states, explicit broadcasts, visibility/target separation, shared scheduling and verification. [Vision progress](vision-progress.md) distinguishes integrated capabilities from preview-only mechanics and remaining work. Historical reports and evidence are preserved.
+Reviewed baseline: Phase 4.7 commit `14fcca7`. **Phase 4.8 - Creator Section → Head Formation Integration** implements a visible change on the normal portfolio URL. Observed Creator activity controls the head; other sections reverse it, with explicit pause/reduced-motion/visibility policy. One Canvas renders the ambient field and only the head/neck entity subset. See the [report](phase-reports/phase-4.8-report.md), [main-page before/after evidence](evidence/phase-4.8/README.md) and [vision progress](vision-progress.md).
 
-Main website visual change: none; regional mechanics remain preview-only.
+The complete humanoid and other region mechanics remain preview-only. Cinematic intro, cumulative chapter assembly and final reveal remain unimplemented. Stop after Phase 4.8 for review. One proposed bounded next step is real-device and accessibility validation of the Creator/head integration; no further region integration is authorized by this phase.
 
-The last planned isolated mechanics step is complete. The next bounded task is **Creator section → head formation integration**, preserving the late full-humanoid reveal. Define scroll, reverse-scroll, direct-link and reduced-motion behavior before coding. No Phase 4.8 or integration work has started.
-
-| Capability                                           | Status                                                                                                                                      |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| React/TypeScript/Vite/Tailwind setup                 | Present                                                                                                                                     |
-| R3F Canvas and rendering defaults                    | Compile blocker fixed; headless Chrome mount and resizing verified                                                                          |
-| Scene content                                        | One restrained seeded particle field with negative space and stable camera                                                                  |
-| Experience state / world contract                    | React-owned observed section and separate last activation; typed read-only snapshot, no world consumer or orchestration                     |
-| Particles / humanoid / shaders                       | Public ambient field plus separate independently reversible regional humanoid preview; no production reveal or custom shaders               |
-| Countdown / Big Bang / chapter sequence              | Not implemented                                                                                                                             |
-| Portfolio content / semantic navigation              | Five DOM sections and native anchors implemented; supplied content only, gaps explicit                                                      |
-| Interaction / motion / adaptation                    | Ambient motion policy and development entity formation/dissolution with independent regional commands; no chapter integration or adaptation |
-| Runtime quality / accessibility / resilience systems | Keyboard/skip access, live reduced-motion CSS, and initialization fallback implemented; broader systems remain open                         |
-| Documentation                                        | Reconstructed baseline with new phase evidence; Phase 4.2 removed the local docs ignore rule                                                |
+| Capability                                           | Status                                                                                                                                                                  |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| React/TypeScript/Vite/Tailwind setup                 | Present                                                                                                                                                                 |
+| R3F Canvas and rendering defaults                    | Compile blocker fixed; headless Chrome mount and resizing verified                                                                                                      |
+| Scene content                                        | One ambient field plus a Creator-local 284-point head; shared Canvas and stable camera                                                                                  |
+| Experience state / world contract                    | React-owned observed section and separate last activation; observed Creator state now drives the head; historical activation remains separate, no generic orchestration |
+| Particles / humanoid / shaders                       | Public ambient field + Creator head; complete humanoid/other regions remain preview-only; no final reveal or custom shaders                                             |
+| Countdown / Big Bang / chapter sequence              | Not implemented                                                                                                                                                         |
+| Portfolio content / semantic navigation              | Five DOM sections and native anchors implemented; supplied content only, gaps explicit                                                                                  |
+| Interaction / motion / adaptation                    | Public Creator/head reversal with shared visual pause and motion policy; preview regional controls retained; no adaptation                                              |
+| Runtime quality / accessibility / resilience systems | Keyboard/skip access, live reduced-motion CSS, and initialization fallback implemented; broader systems remain open                                                     |
+| Documentation                                        | Reconstructed baseline with new phase evidence; Phase 4.2 removed the local docs ignore rule                                                                            |
 
 For resumption, use [development order](development-order.md). Do not assign completion percentages without a defined scope and acceptance criteria.

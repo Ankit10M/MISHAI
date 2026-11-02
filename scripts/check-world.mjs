@@ -65,9 +65,9 @@ try {
   const first = await evaluate('worldProbe.read()');
   assert.equal(await evaluate('document.querySelectorAll("canvas").length'), 1);
   assert.equal(first.count, field.count);
-  assert.equal(first.calls, 1);
-  assert.equal(first.points, field.count);
-  assert.deepEqual(first.memory, { geometries: 1, textures: 0 });
+  assert.equal(first.calls, 2);
+  assert.equal(first.points, field.count + 284);
+  assert.deepEqual(first.memory, { geometries: 2, textures: 0 });
   assert.deepEqual(first.camera, [0, 0, 6]);
 
   await evaluate(`worldProbe.times=[]; worldProbe.maxStep=0`);
@@ -94,6 +94,9 @@ try {
 
   await evaluate(`worldProbe.maxStep=0; document.querySelector('nav a[href="#projects"]').click()`);
   await waitFor(`document.querySelector('nav a[aria-current]')?.hash === '#projects'`);
+  await waitFor(
+    `Math.abs(document.querySelector('#projects').getBoundingClientRect().top - parseFloat(getComputedStyle(document.querySelector('#projects')).scrollMarginBlockStart)) < 1`,
+  );
   assert.equal(await evaluate('worldProbe.read().geometry'), first.geometry);
   assert.equal(await evaluate('worldProbe.read().material'), first.material);
   assert.ok(
@@ -102,6 +105,7 @@ try {
   );
 
   await evaluate(`document.querySelector('.background-motion-control button').focus()`);
+  await waitFor('scrollY === 0');
   for (const type of ['keyDown', 'keyUp'])
     await send('Input.dispatchKeyEvent', {
       type,
@@ -117,14 +121,23 @@ try {
   const paused = await evaluate('worldProbe.read()');
   await evaluate(`document.querySelector('nav a[href="#projects"]').click()`);
   await waitFor(`document.querySelector('nav a[aria-current]')?.hash === '#projects'`);
+  await waitFor(
+    `Math.abs(document.querySelector('#projects').getBoundingClientRect().top - parseFloat(getComputedStyle(document.querySelector('#projects')).scrollMarginBlockStart)) < 1`,
+  );
   await settled();
   assert.equal(await evaluate('worldProbe.read().geometry'), first.geometry);
   assert.equal(await evaluate('worldProbe.read().material'), first.material);
   await preference('reduce');
-  await waitFor(`document.querySelector('.background-motion-control button').disabled`);
+  await waitFor(
+    `document.querySelector('.background-motion-control button').textContent.includes('Resume')`,
+  );
+  assert.equal(
+    await evaluate(`document.querySelector('.background-motion-control button').disabled`),
+    false,
+  );
   assert.equal(
     await evaluate(`document.querySelector('.background-motion-control button').textContent`),
-    'Background motion off',
+    'Resume visual motion',
   );
   await settled();
   await preference('no-preference');
@@ -241,7 +254,7 @@ try {
     for (let cycle = 0; cycle < 2; cycle++) {
       await waitFor('worldProbe.scene !== null');
       assert.deepEqual(await evaluate('worldFixture.read()'), { visibility: 1, preferences: 1 });
-      assert.deepEqual(await evaluate('worldProbe.read().memory'), { geometries: 1, textures: 0 });
+      assert.deepEqual(await evaluate('worldProbe.read().memory'), { geometries: 2, textures: 0 });
       await evaluate('worldFixture.unmount()');
       await waitFor('worldProbe.disposed.geometry === 1 && worldProbe.disposed.material === 1');
       await waitFor('worldProbe.read().contextLost');
